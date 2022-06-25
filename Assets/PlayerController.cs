@@ -44,19 +44,19 @@ public class PlayerController : MonoBehaviour
     }
 
     void doTeleport(){
-        if(Vector2.Distance(transform.position,teleport1.position)>0.6f &&Vector2.Distance(transform.position,teleport2.position)>0.5f){
+        if(Vector2.Distance(transform.position,teleport1.position)>0.85f &&Vector2.Distance(transform.position,teleport2.position)>0.9f){
             teleported=false;
         }
 
-        if(Mathf.Abs(transform.position.x-teleport1.position.x)<0.5f&&teleported==false ){
+        if(Vector2.Distance(transform.position,teleport1.position)<1f&&teleported==false){
             teleported=true;
-            Vector2 novo= new Vector2(teleport2.position.x+.7f,teleport2.position.y);
+            Vector2 novo= new Vector2(teleport2.position.x+1f,teleport2.position.y);
             transform.position=novo;
         }
 
-        if(Mathf.Abs(transform.position.x-teleport2.position.x)<.5f&&teleported==false){
+        if(Vector2.Distance(transform.position,teleport2.position)<1f&&teleported==false){
             teleported=true;
-            Vector2 novo= new Vector2(teleport1.position.x-.7f,teleport1.position.y);
+            Vector2 novo= new Vector2(teleport1.position.x-1f,teleport1.position.y+.2f);
             transform.position=novo;
         }
     }
