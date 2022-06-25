@@ -7,9 +7,25 @@ public class RobotScript : MonoBehaviour
     int idRobot;
     bool[] robotParts;
     bool done;
+
+
+    public List<Transform> points = new List<Transform>();
+    public float speed;
+
+    int currentPoint = 0;
+
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
+
+        //posiçao do robo = ponto inicial
+        transform.position = points[0].position;
+
+
         done=false;
         
         int wave=1;
@@ -57,7 +73,15 @@ public class RobotScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         
+        bool reached = Vector2.Distance(transform.position, points[currentPoint].position) <= .1f;
+        if (reached) currentPoint++;
+
+
+        Vector3 goal = points[currentPoint].position - transform.position;
+        
+        transform.Translate(goal.normalized * speed * Time.deltaTime);
     }
 
     void insertPart(int idPart){
