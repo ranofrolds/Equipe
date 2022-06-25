@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float Velocidade;
+    public Transform teleport1, teleport2;
+
+    bool teleported=false;
     Rigidbody2D r;
     
     float h, v;
@@ -23,7 +26,9 @@ public class PlayerController : MonoBehaviour
         v = Input.GetAxisRaw("Vertical");        
 
         //DETECTAR INPUT
+        doTeleport();
     }
+
 
 
     void FixedUpdate()
@@ -36,5 +41,23 @@ public class PlayerController : MonoBehaviour
 
         r.velocity = novaVelocidade;
 
+    }
+
+    void doTeleport(){
+        if(Vector2.Distance(transform.position,teleport1.position)>0.85f &&Vector2.Distance(transform.position,teleport2.position)>0.9f){
+            teleported=false;
+        }
+
+        if(Vector2.Distance(transform.position,teleport1.position)<1f&&teleported==false){
+            teleported=true;
+            Vector2 novo= new Vector2(teleport2.position.x+1f,teleport2.position.y);
+            transform.position=novo;
+        }
+
+        if(Vector2.Distance(transform.position,teleport2.position)<1f&&teleported==false){
+            teleported=true;
+            Vector2 novo= new Vector2(teleport1.position.x-1f,teleport1.position.y+.2f);
+            transform.position=novo;
+        }
     }
 }
