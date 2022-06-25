@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class CheckpointList : MonoBehaviour
 {
-    
+    public List<Transform> points = new List<Transform>();
 }

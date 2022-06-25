@@ -9,7 +9,7 @@ public class RobotScript : MonoBehaviour
     bool done;
 
 
-    public List<Transform> points = new List<Transform>();
+    List<Transform> points = new List<Transform>();
     public float speed;
 
     int currentPoint = 0;
@@ -22,9 +22,12 @@ public class RobotScript : MonoBehaviour
     void Start()
     {
 
+
+        //pegar lista de pontos
+        points = GameObject.Find("Checkpoints").GetComponent<CheckpointList>().points;
+
         //posiçao do robo = ponto inicial
         transform.position = points[0].position;
-
 
         done=false;
         
