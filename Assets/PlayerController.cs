@@ -60,4 +60,8 @@ public class PlayerController : MonoBehaviour
             transform.position=novo;
         }
     }
+
+    void pickItem(){
+        
+    }
 }

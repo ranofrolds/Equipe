@@ -10,11 +10,13 @@ public class RobotScript : MonoBehaviour
 
 
     List<Transform> points = new List<Transform>();
+
+    
     public float speed;
 
     int currentPoint = 0;
 
-
+    
 
 
 
@@ -22,6 +24,7 @@ public class RobotScript : MonoBehaviour
     void Start()
     {
 
+        speed= GameObject.Find("Wave").GetComponent<WaveScript>().speed;
 
         //pegar lista de pontos
         points = GameObject.Find("Checkpoints").GetComponent<CheckpointList>().points;
@@ -31,7 +34,7 @@ public class RobotScript : MonoBehaviour
 
         done=false;
         
-        int wave=1;
+        int wave= GameObject.Find("Wave").GetComponent<WaveScript>().idWave;
         int min=0, max=0;
         /*
         wave 1 - 2 -> 2 peças
@@ -77,14 +80,30 @@ public class RobotScript : MonoBehaviour
     void Update()
     {
 
-        
+        Queue<GameObject> robots = GameObject.Find("Wave").GetComponent<WaveScript>().robots;
         bool reached = Vector2.Distance(transform.position, points[currentPoint].position) <= .1f;
-        if (reached) currentPoint++;
+        if (reached){
+            currentPoint++;
+        } 
 
 
         Vector3 goal = points[currentPoint].position - transform.position;
+
         
         transform.Translate(goal.normalized * speed * Time.deltaTime);
+
+        if(currentPoint==11){
+            if(robots!=null){
+
+                robots.Dequeue();
+            }
+            Destroy(gameObject);
+        }
+
+        if(done==true){
+            GameObject.Find("Wave").GetComponent<WaveScript>().done[GameObject.Find("Wave").GetComponent<WaveScript>().idWave]+=1;
+        }
+
     }
 
     void insertPart(int idPart){
