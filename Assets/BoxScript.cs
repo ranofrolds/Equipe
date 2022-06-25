@@ -5,13 +5,22 @@ using UnityEngine;
 public class BoxScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int idBox;
-    public int idItem;
-    public string status;
+    int idBox;
+    int idItem;
+    string status;
 
+    void Start()
+    {
+        
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 
-    public void changeStatus(string newStatus){
+    void changeStatus(string newStatus){
         if(newStatus=="Loading"){
             this.status = newStatus;
             StartCoroutine(delay(2));
@@ -28,11 +37,12 @@ public class BoxScript : MonoBehaviour
     }
 
 
-    public void pickItem(){
+    void pickItem(){
         if(this.status=="Ready"){
             //pegar o item
         }
         
+        //mudar o status para loading
         changeStatus("Loading");
     }
 
