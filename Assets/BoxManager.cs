@@ -16,19 +16,28 @@ public class BoxManager : MonoBehaviour
             }
         }
 
+        
+        boxes.Clear();
+
         for(int i=0; i<28;i++){
+            boxes.Add(GameObject.Find("box"+i.ToString()).GetComponent<BoxScript>());
+
             //colocar seus respectivos BOX TYPES
 
             if(i>=0 && i<17){
+                boxes[i].boxType="Papelao";
                 //papelao
             }
             else if(i>=17 && i<24){
+                boxes[i].boxType="Metal";
                 //metal
             }
             else if(i>=24 && i<27){
+                boxes[i].boxType="Lixeira";
                 //lixeira
             }
             else{
+                boxes[i].boxType="Energia";
                 //energia
             }
         }
