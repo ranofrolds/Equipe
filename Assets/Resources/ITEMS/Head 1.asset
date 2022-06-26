@@ -10,7 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c49e123fdd3bd423cba69ba819901cba, type: 3}
-  m_Name: Arm1
+  m_Name: Head 1
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 9206e6b16043c4dd5a3a9eed00296089, type: 3}
-  idItemType: 0
+  icon: {fileID: 21300000, guid: f2509f7d9978b4d93ad51858bf0a98f7, type: 3}
+  spriteLeft: {fileID: 21300000, guid: 1b7dae6d4772a40ada766e2c2f83718b, type: 3}
+  spriteRight: {fileID: 21300000, guid: 1b7dae6d4772a40ada766e2c2f83718b, type: 3}
+  variant: 0
+  type: Head

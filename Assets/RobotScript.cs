@@ -9,7 +9,7 @@ public class RobotScript : MonoBehaviour
     public bool armsSeparated;
     public bool legsSeparated;
 
-    public List<ItemSlot> slots = new List<ItemSlot>();
+    public List<ItemSlotMonobehaviour> slots = new List<ItemSlotMonobehaviour>();
 
     public int score;
     public int maxScore;
@@ -28,6 +28,7 @@ public class RobotScript : MonoBehaviour
     int currentPoint = 0;
 
     
+    public List<Item> build = new List<Item>();
 
 
 
@@ -71,7 +72,8 @@ public class RobotScript : MonoBehaviour
         
         transform.Translate(goal.normalized * speed * Time.deltaTime);
 
-        if(currentPoint==12){
+        if(currentPoint==12)
+        {
             if(robots!=null){
 
                 if(robots.Count == 1)
@@ -80,31 +82,10 @@ public class RobotScript : MonoBehaviour
                 }
                 robots.Dequeue();
 
-            }
-            
-
-         
-
-
-        //para cada slot de item
-        for(int i = 0; i < slots.Count; i++)
-        {
-            if(slots[i].currentItem == null) slots[i].currentItem = nothing;
-            bool rightItem = slots[i].idRequestedItemType == slots[i].currentItem.idItemType;
-
-            //se estiver preenchido e certo, adicionar ponto
-            if(slots[i].filled && rightItem) score += 10;
-        }
-
-            waveScript.maxScore += maxScore;
-            waveScript.score += score;
-            
-            if(score==maxScore){
-                GameObject.Find("Wave").GetComponent<WaveScript>().done[GameObject.Find("Wave").GetComponent<WaveScript>().idWave]+=1;
-            }
-
+            }     
+    
             Destroy(gameObject);
-           
+               
         }
 
         
@@ -119,7 +100,7 @@ public class RobotScript : MonoBehaviour
         //para cada slot de item
         for(int i = 0; i < slots.Count; i++)
         {
-
+            if(anySlotFilled) break;
             //está prenchido?
 
             //se não...
@@ -131,8 +112,16 @@ public class RobotScript : MonoBehaviour
                 //se sim, colocar parte
                 if(insertedPart.type == slots[i].type)
                 {
+                    anySlotFilled = true;
                     slots[i].currentItem = insertedPart;
                     slots[i].filled = true;
+
+
+                    slots[i].transform.GetComponent<SpriteRenderer>().sprite = 
+                        slots[i].isLeft ? insertedPart.spriteLeft : insertedPart.spriteRight;
+
+                    
+                    build.Add(insertedPart);
                 }
 
             }

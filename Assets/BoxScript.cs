@@ -27,6 +27,7 @@ public class BoxScript : MonoBehaviour
 
     }
 
+    
     void Update()
     {
         //Se tem filho
@@ -34,9 +35,9 @@ public class BoxScript : MonoBehaviour
         {
             if(status == "Unavailable") itemSprite.sprite = null;
             else if (status == "Trash") itemSprite.sprite = manager.trash;
-            else if(status != "Loading") itemSprite.sprite = item.sprite;
+            else if(status != "Loading") itemSprite.sprite = item.icon;
             else itemSprite.sprite = manager.loading;
-            itemSprite.transform.localScale = selected ? (Vector3.one * 2) : Vector3.one;
+            itemSprite.transform.localScale = selected ? (Vector3.one * manager.multiplier) : Vector3.one;
             
         }
 

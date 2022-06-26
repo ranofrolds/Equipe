@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2275783945437041071}
   - component: {fileID: 8915443954010509440}
+  - component: {fileID: 913767679717161612}
   m_Layer: 6
-  m_Name: Hole 4
+  m_Name: Right Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,17 +74,35 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.08627451}
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &913767679717161612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492764716988886416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e650aca8e6964451eac6e08dfaec0b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filled: 0
+  sprite: {fileID: 0}
+  type: Arm
+  isLeft: 0
+  wantedItem: {fileID: 0}
+  currentItem: {fileID: 11400000, guid: 55d9a7bd55f384e38b18dc284b6a5886, type: 2}
 --- !u!1 &3324634989954844573
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,7 +157,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   armsSeparated: 0
   legsSeparated: 0
-  slots: []
+  slots:
+  - {fileID: 913767679717161615}
+  - {fileID: 913767679717161614}
+  - {fileID: 913767679717161613}
+  - {fileID: 913767679717161612}
+  - {fileID: 913767679717161611}
+  - {fileID: 1510721013}
   score: 0
   maxScore: 0
   robotManager: {fileID: 0}
@@ -224,8 +249,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5278949099061522843}
   - component: {fileID: 4739055193581312472}
+  - component: {fileID: 913767679717161615}
   m_Layer: 6
-  m_Name: Hole 1
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -287,17 +313,35 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.08627451}
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &913767679717161615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4760866484271808328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e650aca8e6964451eac6e08dfaec0b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filled: 0
+  sprite: {fileID: 0}
+  type: Body
+  isLeft: 1
+  wantedItem: {fileID: 0}
+  currentItem: {fileID: 11400000, guid: 55d9a7bd55f384e38b18dc284b6a5886, type: 2}
 --- !u!1 &6141963831378915909
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,8 +352,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5552594190585100831}
   - component: {fileID: 7469487555615446257}
+  - component: {fileID: 913767679717161614}
   m_Layer: 6
-  m_Name: Hole 2
+  m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -371,17 +416,35 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.08627451}
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &913767679717161614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6141963831378915909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e650aca8e6964451eac6e08dfaec0b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filled: 0
+  sprite: {fileID: 0}
+  type: Head
+  isLeft: 1
+  wantedItem: {fileID: 0}
+  currentItem: {fileID: 11400000, guid: 55d9a7bd55f384e38b18dc284b6a5886, type: 2}
 --- !u!1 &6255295989496465215
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,8 +455,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8473473604410964187}
   - component: {fileID: 6973741527344247520}
+  - component: {fileID: 1510721013}
   m_Layer: 6
-  m_Name: Hole 6
+  m_Name: Right Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -455,17 +519,35 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.08627451}
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1510721013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6255295989496465215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e650aca8e6964451eac6e08dfaec0b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filled: 0
+  sprite: {fileID: 0}
+  type: Leg
+  isLeft: 0
+  wantedItem: {fileID: 0}
+  currentItem: {fileID: 11400000, guid: 55d9a7bd55f384e38b18dc284b6a5886, type: 2}
 --- !u!1 &6758719041529927608
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,8 +558,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4804693731041086260}
   - component: {fileID: 8525609037451896794}
+  - component: {fileID: 913767679717161613}
   m_Layer: 6
-  m_Name: Hole 3
+  m_Name: Left Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -539,17 +622,35 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.08627451}
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &913767679717161613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6758719041529927608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e650aca8e6964451eac6e08dfaec0b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filled: 0
+  sprite: {fileID: 0}
+  type: Arm
+  isLeft: 1
+  wantedItem: {fileID: 0}
+  currentItem: {fileID: 11400000, guid: 55d9a7bd55f384e38b18dc284b6a5886, type: 2}
 --- !u!1 &8303463380099966610
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,8 +661,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8316858540547576698}
   - component: {fileID: 75146477820815831}
+  - component: {fileID: 913767679717161611}
   m_Layer: 6
-  m_Name: Hole 5
+  m_Name: Left Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -623,14 +725,32 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.08627451}
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &913767679717161611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8303463380099966610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e650aca8e6964451eac6e08dfaec0b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filled: 0
+  sprite: {fileID: 0}
+  type: Leg
+  isLeft: 1
+  wantedItem: {fileID: 0}
+  currentItem: {fileID: 11400000, guid: 55d9a7bd55f384e38b18dc284b6a5886, type: 2}

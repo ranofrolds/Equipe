@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
 
         robotDetect();
        
-        heldSprite.sprite = heldItem.sprite;
+        heldSprite.sprite = heldItem.icon;
 
     }
 
@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
             robotScript.selected = true;
 
             //se clicou pra inserir & está segurando alguma coisa
-            if (Input.GetButtonDown("Pegar") && heldItem.idItemType != -1)
+            if (Input.GetButtonDown("Pegar") && heldItem != nothing)
             {
 
                 //se a parte foi inserida com sucesso

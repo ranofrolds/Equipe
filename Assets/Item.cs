@@ -6,9 +6,10 @@ using UnityEngine;
 public class Item : ScriptableObject
 {
     
-    public Sprite sprite;
-    public int idItemType;
+    public Sprite icon;
+    public Sprite spriteLeft, spriteRight;
 
+    public int variant;
     public string type;
 
 }

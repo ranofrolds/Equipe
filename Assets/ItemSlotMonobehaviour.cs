@@ -9,7 +9,9 @@ public class ItemSlotMonobehaviour : MonoBehaviour
     public Sprite sprite;
 
     public string type;
+    public bool isLeft;
 
+    public Item wantedItem;
     public Item currentItem;
 
 

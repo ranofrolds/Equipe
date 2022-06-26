@@ -60,7 +60,11 @@ public class WaveScript : MonoBehaviour
 
     void Update()
     {
-        print(GameObject.Find("box27").GetComponent<EnergyBoxScript>().energia);
+
+        //TEMPORARIO - TIRAR ISSO ANTES DE BUILDAR O JOGO
+        if(Input.GetKeyDown(KeyCode.R)) UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+
+        //print(GameObject.Find("box27").GetComponent<EnergyBoxScript>().energia);
         if(robots.Count==0 && restarted==false){
             //BOTAR UM DELAY PARA COMEÇAR PROXIMA WAVE VVV
             restarted=true;
@@ -92,7 +96,7 @@ public class WaveScript : MonoBehaviour
         Restart();
     }
 
-     void generateWaveBox(){
+    void generateWaveBox(){
         List<BoxScript> boxes = GameObject.Find("BoxManager").GetComponent<BoxManager>().boxes;
         List<BoxScript> boxesPapelao=new List<BoxScript>();
         List<BoxScript> boxesMetal=new List<BoxScript>();
@@ -113,50 +117,99 @@ public class WaveScript : MonoBehaviour
         //papelao 17 max
         //metal 7 max
         int papelao=0, metal=0;
-
+        Item newItem=null;
         if(idWave>0)
         {
             if(idWave == 1){
+                
+
                 waveDifficulty=1;
                 papelao=6;
                 //ativar só algumas de papelao
             }
             else if(idWave == 3){
+                newItem=robotManager.allItems.Dequeue();
                 waveDifficulty=2;
                 papelao=3;
                //ativar mais algumas de papelao
             }
             else if(idWave == 5){
+                newItem=robotManager.allItems.Dequeue();
                 waveDifficulty=3;
                 papelao=4;
                //ativar mais algumas de papelao
             }
             else if(idWave ==7){
+                newItem=robotManager.allItems.Dequeue();
                  waveDifficulty=4;
                 papelao=4;
                 //ativar todas de papelao
             }
             else if(idWave ==10){
+                newItem=robotManager.allItems.Dequeue();
                  waveDifficulty=5;
                 metal=1;
                 //ativar algumas de metal
             }
             else if(idWave ==13){
+                newItem=robotManager.allItems.Dequeue();
                  waveDifficulty=6;
-                metal=2;
+                metal=1;
+                //ativar algumas de metal
+            }
+            else if(idWave ==15){
+                newItem=robotManager.allItems.Dequeue();
+                 waveDifficulty=7;
+                metal=1;
                 //ativar algumas de metal
             }
             else if(idWave == 18)
             {
-                waveDifficulty=7;
-                metal=4;
+                newItem=robotManager.allItems.Dequeue();
+                waveDifficulty=8;
+                metal=2;
+                //ativar todas de metal
+            }
+            else if(idWave == 20)
+            {
+                newItem=robotManager.allItems.Dequeue();
+                waveDifficulty=9;
+                metal=3;
                 //ativar todas de metal
             }
         }
 
+        //Na wave 1, pegar 1 de cada
+        if(newItem!=null){
+            robotManager.currentItems.Add(newItem);
+            switch(newItem.type){
+                    case "Arm":
+                    robotManager.currentArms.Add(newItem);
+                    break;
+                    case "Body":
+                    robotManager.currentBodys.Add(newItem);
+                    break;
+                    case "Leg":
+                    robotManager.currentLegs.Add(newItem);
+                    break;
+                    case "Head":
+                    robotManager.currentHeads.Add(newItem);
+                    break;
+
+
+            }
+        }
+        
+
+
+        int randomItem = Random.Range(0, robotManager.currentItems.Count);
+
         for(int i=0; i<papelao;i++){
 
-    
+            randomItem++;
+            if(randomItem == robotManager.currentItems.Count) randomItem = 0;
+
+
             //ativa as de papelao
             int rnd=Random.Range(0, 17);
             
@@ -165,99 +218,26 @@ public class WaveScript : MonoBehaviour
                 rnd=Random.Range(0, 17);
             }
             boxesPapelao[rnd].status="Ready";
+            boxesPapelao[rnd].item = robotManager.currentItems[randomItem];
         }
 
         for(int i=0; i<metal;i++){
+
+            randomItem++;
+            if(randomItem == robotManager.currentItems.Count) randomItem = 0;
+
+
             //ativa as de metal
             int rnd=Random.Range(0, 7);
+            
             while(boxesMetal[rnd].status=="Ready" || boxesMetal[rnd].status=="Loading"){
                 rnd=Random.Range(0, 7);
             }
             boxesMetal[rnd].status="Ready";
+            boxesMetal[rnd].item = robotManager.currentItems[randomItem];
         }
 
     }
 
-    ///void generateRobot(RobotScript robotScript)
-    ///{
-    ///    //pegar lista de buracos
-    ///    for(int i = 0; i < robotScript.transform.childCount; i++)
-    ///    {
-    ///        robotScript.holes.Add(robotScript.transform.GetChild(i).GetComponent<SpriteRenderer>());
-    ///        robotScript.holes[i].enabled = false;
-    ///    }
-///
-///
-    ///    int wave= idWave;
-    ///    int min=0, max=0;
-    ///    /*
-    ///    wave 1 - 2 -> 2 peças
-    ///    wave 3 - 5 ->2 - 3 peças
-    ///    wave  6- 8 -> 2- 4 
-    ///    wave 8 - 12 -> 3 - 5
-    ///    wave 12+ -> 5
-    ///    */
-///
-    ///    if(wave>0){
-    ///        if(wave <= 2){
-    ///            min=1;
-    ///            max=2;
-    ///        }
-    ///        else if(wave <=5){
-    ///            min=2;
-    ///            max=3;
-    ///        }
-    ///        else if(wave <=8){
-    ///            min=2;
-    ///            max=4;
-    ///        }
-    ///        else if(wave <=12){
-    ///            min=3;
-    ///            max=5;
-    ///        }
-    ///        else{
-    ///            min=5;
-    ///            max=5;
-    ///        }
-    ///    }
-///
-    ///    
-    ///    if(min !=0 && max!=0 )
-    ///    {
-    ///        int quantidadeItens = Random.Range(min, max+1);
-///
-    ///        for(int i = 0; i < quantidadeItens; i++)
-    ///        {
-///
-    ///            //Criar novo slot de item
-    ///            ItemSlot newSlot = (ItemSlot)ScriptableObject.CreateInstance("ItemSlot");
-///
-    ///            //gerar random o tipo de item que vai ser
-    ///            newSlot.idRequestedItemType = Random.Range(0, robotManager.maxItemTypeId + 1);
-    ///            //definir que o slot não foi preenchido
-    ///            newSlot.filled = false;
-///
-    ///            //btaço
-    ///            if(newSlot.idRequestedItemType == 0) newSlot.icon = armIcon;
-    ///            //bola
-    ///            else if(newSlot.idRequestedItemType == 1) newSlot.icon = ballIcon;
-///
-    ///            //adicionar slot a lista de slots
-    ///            robotScript.robotParts.Add(newSlot);
-///
-    ///            //Aumentar o score máximo
-    ///            robotScript.maxScore += 10;
-    ///        }
-    ///        
-    ///    }
-    ///    
-    ///    //habilitar numero certo de buracos
-    ///    for(int i = 0; i < robotScript.robotParts.Count; i++)
-    ///    {
-    ///        robotScript.holes[i].enabled = true;
-    ///        robotScript.holes[i].sprite = robotScript.robotParts[i].icon;
-    ///    }
-///
-    ///}
     
 }

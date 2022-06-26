@@ -9,6 +9,8 @@ public class BoxManager : MonoBehaviour
     public List<Sprite> sprites = new List<Sprite>();
     public List<BoxScript> boxes = new List<BoxScript>();
 
+    public float multiplier;
+
     void Start(){
         foreach(BoxScript box in boxes){
             if(box.status!="Trash" && box.status!="Energia"){
