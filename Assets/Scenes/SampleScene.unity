@@ -1179,7 +1179,7 @@ GameObject:
   - component: {fileID: 517544085}
   - component: {fileID: 517544086}
   m_Layer: 3
-  m_Name: lixo 2
+  m_Name: box25
   m_TagString: Untagged
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3758,7 +3758,7 @@ GameObject:
   - component: {fileID: 1259641256}
   - component: {fileID: 1259641257}
   m_Layer: 3
-  m_Name: lixo 1
+  m_Name: box24
   m_TagString: Untagged
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -4109,9 +4109,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0588929b6ebad4574afa2f739aae8712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allItems: []
-  currentItems: []
-  maxItemTypeId: 0
+  allItems:
+  - {fileID: 11400000, guid: a99a972602b324b0b95b3d9e4a4793bd, type: 2}
+  - {fileID: 11400000, guid: a75be861a932b48589aefdef99f24370, type: 2}
+  currentItems:
+  - {fileID: 11400000, guid: a99a972602b324b0b95b3d9e4a4793bd, type: 2}
+  - {fileID: 11400000, guid: a75be861a932b48589aefdef99f24370, type: 2}
+  maxItemTypeId: 1
   robots: []
 --- !u!4 &1323283765
 Transform:
@@ -4140,7 +4144,7 @@ GameObject:
   - component: {fileID: 1326413147}
   - component: {fileID: 1326413148}
   m_Layer: 3
-  m_Name: lixo 3
+  m_Name: box26
   m_TagString: Untagged
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -5518,10 +5522,10 @@ MonoBehaviour:
   robot: {fileID: 3324634989954844573, guid: 5df8e4a7ba812c54d87237774558cfc6, type: 3}
   idWave: 0
   done: 
-  speed: 0.3
+  speed: 10
   restarted: 0
-  delayBetweenRobots: 20
-  delayBetweenWaves: 10
+  delayBetweenRobots: 1
+  delayBetweenWaves: 1
   robotManager: {fileID: 1323283764}
 --- !u!4 &1742345461
 Transform:

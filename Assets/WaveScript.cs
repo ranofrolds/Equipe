@@ -27,8 +27,9 @@ public class WaveScript : MonoBehaviour
         restarted=false;
         idWave=1;
         done.Add(0);
-
+        generateWaveBox();
         GameObject currentRobot = Instantiate(robot);
+        generateRobot(currentRobot.GetComponent<RobotScript>());
         robots.Enqueue(currentRobot);
         robotManager.robots.Add(currentRobot.GetComponent<RobotScript>());
         StartCoroutine(delay(delayBetweenRobots));
@@ -38,7 +39,9 @@ public class WaveScript : MonoBehaviour
     void Restart(){
         idWave++;
         done.Add(0);        
+        generateWaveBox();
         GameObject currentRobot = Instantiate(robot);
+        generateRobot(currentRobot.GetComponent<RobotScript>());
         robots.Enqueue(currentRobot);
         robotManager.robots.Add(currentRobot.GetComponent<RobotScript>());
         StartCoroutine(delay(delayBetweenRobots));
@@ -61,6 +64,7 @@ public class WaveScript : MonoBehaviour
             yield return new WaitForSeconds(delay);
             
             GameObject currentRobot = Instantiate(robot);
+            generateRobot(currentRobot.GetComponent<RobotScript>());
             robots.Enqueue(currentRobot);
             robotManager.robots.Add(currentRobot.GetComponent<RobotScript>());
         }
@@ -98,11 +102,11 @@ public class WaveScript : MonoBehaviour
                 //ativar só algumas de papelao
             }
             else if(idWave <=5){
-                papelao=12;
+                papelao=6;
                //ativar mais algumas de papelao
             }
             else if(idWave <=8){
-                papelao=17;
+                papelao=5;
                 //ativar todas de papelao
             }
             else if(idWave <=12){
@@ -110,7 +114,7 @@ public class WaveScript : MonoBehaviour
                 //ativar algumas de metal
             }
             else{
-                metal=8;
+                metal=4;
                 //ativar todas de metal
             }
         }
@@ -126,11 +130,80 @@ public class WaveScript : MonoBehaviour
 
         for(int i=0; i<metal;i++){
             //ativa as de metal
-            int rnd=Random.Range(0, 17);
+            int rnd=Random.Range(17, 24);
             while(boxesMetal[rnd].status=="Ready" || boxesMetal[rnd].status=="Loading"){
-                rnd=Random.Range(0, 17);
+                rnd=Random.Range(17, 24);
             }
             boxesMetal[rnd].status="Ready";
+        }
+
+    }
+
+    void generateRobot(RobotScript robotScript)
+    {
+        //pegar lista de buracos
+        for(int i = 0; i < robotScript.transform.childCount; i++)
+        {
+            robotScript.holes.Add(robotScript.transform.GetChild(i).GetComponent<SpriteRenderer>());
+            robotScript.holes[i].enabled = false;
+        }
+
+
+        int wave= idWave;
+        int min=0, max=0;
+        /*
+        wave 1 - 2 -> 2 peças
+        wave 3 - 5 ->2 - 3 peças
+        wave  6- 8 -> 2- 4 
+        wave 8 - 12 -> 3 - 5
+        wave 12+ -> 5
+        */
+
+        if(wave>0){
+            if(wave <= 2){
+                min=1;
+                max=2;
+            }
+            else if(wave <=5){
+                min=2;
+                max=3;
+            }
+            else if(wave <=8){
+                min=2;
+                max=4;
+            }
+            else if(wave <=12){
+                min=3;
+                max=5;
+            }
+            else{
+                min=5;
+                max=5;
+            }
+        }
+
+        if(min !=0 && max!=0 ){
+            int quantidadeItens = Random.Range(min, max+1);
+
+            for(int i = 0; i < quantidadeItens; i++)
+            {
+                int newItem = Random.Range(0, robotManager.currentItems.Count + 1);
+
+                ItemSlot newSlot = (ItemSlot)ScriptableObject.CreateInstance("ItemSlot");
+
+                newSlot.idItemType = Random.Range(0, robotManager.maxItemTypeId + 1);
+                newSlot.filled = false;
+
+
+                robotScript.robotParts.Add(newSlot);
+            }
+            
+        }
+        
+        //habilitar numero certo de buracos
+        for(int i = 0; i < robotScript.robotParts.Count; i++)
+        {
+            robotScript.holes[i].enabled = true;
         }
 
     }

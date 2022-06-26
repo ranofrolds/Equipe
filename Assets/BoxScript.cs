@@ -28,7 +28,8 @@ public class BoxScript : MonoBehaviour
         //Se tem filho
         if(transform.childCount > 0) 
         {
-            if (status == "Trash") itemSprite.sprite = manager.trash;
+            if(status == "Unavailable") itemSprite.sprite = null;
+            else if (status == "Trash") itemSprite.sprite = manager.trash;
             else if(status != "Loading") itemSprite.sprite = item.sprite;
             else itemSprite.sprite = manager.loading;
             itemSprite.transform.localScale = selected ? (Vector3.one * 2) : Vector3.one;

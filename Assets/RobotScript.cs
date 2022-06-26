@@ -33,12 +33,7 @@ public class RobotScript : MonoBehaviour
         speed= GameObject.Find("Wave").GetComponent<WaveScript>().speed;
 
 
-        //pegar lista de buracos
-        for(int i = 0; i < transform.childCount; i++)
-        {
-            holes.Add(transform.GetChild(i).GetComponent<SpriteRenderer>());
-            holes[i].enabled = false;
-        }
+
 
 
         //pegar lista de pontos
@@ -52,62 +47,6 @@ public class RobotScript : MonoBehaviour
 
         done=false;
         
-        int wave= GameObject.Find("Wave").GetComponent<WaveScript>().idWave;
-        int min=0, max=0;
-        /*
-        wave 1 - 2 -> 2 peças
-        wave 3 - 5 ->2 - 3 peças
-        wave  6- 8 -> 2- 4 
-        wave 8 - 12 -> 3 - 5
-        wave 12+ -> 5
-        */
-
-        if(wave>0){
-            if(wave <= 2){
-                min=1;
-                max=2;
-            }
-            else if(wave <=5){
-                min=2;
-                max=3;
-            }
-            else if(wave <=8){
-                min=2;
-                max=4;
-            }
-            else if(wave <=12){
-                min=3;
-                max=5;
-            }
-            else{
-                min=5;
-                max=5;
-            }
-        }
-
-        if(min !=0 && max!=0 ){
-            int quantidadeItens = Random.Range(min, max+1);
-
-            for(int i = 0; i < quantidadeItens; i++)
-            {
-                int newItem = Random.Range(0, robotManager.currentItems.Count + 1);
-
-                ItemSlot newSlot = (ItemSlot)ScriptableObject.CreateInstance("ItemSlot");
-
-                newSlot.idItemType = Random.Range(0, robotManager.maxItemTypeId + 1);
-                newSlot.filled = false;
-
-
-                robotParts.Add(newSlot);
-            }
-            
-        }
-        
-        //habilitar numero certo de buracos
-        for(int i = 0; i < robotParts.Count; i++)
-        {
-            holes[i].enabled = true;
-        }
 
 
     }
