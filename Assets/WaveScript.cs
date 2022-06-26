@@ -28,6 +28,10 @@ public class WaveScript : MonoBehaviour
     public RobotManager robotManager;
 
     public int waveDifficulty;
+
+    public SidebarMANAGER sidebarMANAGER;
+
+    public GameObject request;
     
 
 
@@ -39,6 +43,7 @@ public class WaveScript : MonoBehaviour
         generateWaveBox();
         GameObject currentRobot = Instantiate(robot);
         //generateRobot(currentRobot.GetComponent<RobotScript>());
+            sidebarMANAGER.requests.Add(Instantiate(request).transform);
         robots.Enqueue(currentRobot);
         robotManager.robots.Add(currentRobot.GetComponent<RobotScript>());
         
@@ -52,6 +57,7 @@ public class WaveScript : MonoBehaviour
         generateWaveBox();
         GameObject currentRobot = Instantiate(robot);
         //generateRobot(currentRobot.GetComponent<RobotScript>());
+            sidebarMANAGER.requests.Add(Instantiate(request).transform);
         robots.Enqueue(currentRobot);
         robotManager.robots.Add(currentRobot.GetComponent<RobotScript>());
         StartCoroutine(delay(delayBetweenRobots));
@@ -79,11 +85,16 @@ public class WaveScript : MonoBehaviour
 
     IEnumerator delay(float delay)
     {
-        for(int i=1; i<(idWave*2)+1; i++){
+
+        int maxRobots = idWave*2;
+        maxRobots = Mathf.Clamp(maxRobots, 0, 6);
+
+        for(int i=1; i<(maxRobots)+1; i++){
             yield return new WaitForSeconds(delay);
             
             GameObject currentRobot = Instantiate(robot);
             //generateRobot(currentRobot.GetComponent<RobotScript>());
+            sidebarMANAGER.requests.Add(Instantiate(request).transform);
             robots.Enqueue(currentRobot);
             robotManager.robots.Add(currentRobot.GetComponent<RobotScript>());
         }

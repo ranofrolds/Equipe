@@ -7,6 +7,8 @@ public class RobotRequest : MonoBehaviour
     
     public List<Item> Build = new List<Item>();
 
+    public List<SpriteRenderer> slots = new List<SpriteRenderer>();
+
     RobotManager robotManager;
 
     public Item Body, Head, Arm, Leg;
@@ -35,6 +37,19 @@ public class RobotRequest : MonoBehaviour
         while (Leg.type != "Leg"){
             Leg = robotManager.currentItems[Random.Range(0, robotManager.currentItems.Count)];
         }
+
+
+        Build.Add(Body);
+        Build.Add(Head);
+        Build.Add(Arm);
+        Build.Add(Leg);
+
+
+        slots[0].sprite = Body.icon;
+        slots[1].sprite = Head.icon;
+        slots[2].sprite = Arm.icon;
+        slots[3].sprite = Leg.icon;
+
 
     }
 
