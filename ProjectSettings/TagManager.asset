@@ -42,6 +42,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Robot
+    uniqueID: 1010210687
+    locked: 0
+  - name: Foreground
+    uniqueID: 1212591701
+    locked: 0
   - name: UI
     uniqueID: 104865475
     locked: 0

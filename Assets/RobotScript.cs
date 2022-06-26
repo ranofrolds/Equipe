@@ -30,6 +30,8 @@ public class RobotScript : MonoBehaviour
     
     public List<Item> build = new List<Item>();
 
+    public SidebarMANAGER managerSidebar;
+
 
 
     // Start is called before the first frame update
@@ -48,6 +50,8 @@ public class RobotScript : MonoBehaviour
         //pegar robotManager
         robotManager = GameObject.Find("RobotManager").GetComponent<RobotManager>();
 
+        managerSidebar = GameObject.Find("SidebarMANAGER").GetComponent<SidebarMANAGER>();
+
         //pegar wave script
         waveScript = GameObject.Find("Wave").GetComponent<WaveScript>();
 
@@ -60,7 +64,44 @@ public class RobotScript : MonoBehaviour
     void Update()
     {
 
+
+        
+
+
         Queue<GameObject> robots = GameObject.Find("Wave").GetComponent<WaveScript>().robots;
+
+        if(currentPoint==12)
+        {
+
+
+
+            
+
+            if(robots!=null){
+
+                if(robots.Count == 1)
+                {
+                    GameObject.Find("Wave").GetComponent<WaveScript>().restarted = false;
+                }
+                robots.Dequeue();
+
+            }     
+    
+            for(int i = 0; i < managerSidebar.requests.Count; i++)
+            {
+                if(build == managerSidebar.requests[i].GetComponent<RobotRequest>().Build)
+                {
+                    
+                    Destroy(managerSidebar.requests[i].gameObject);
+                    managerSidebar.requests.RemoveAt(i);
+                }
+            }
+            
+            
+            Destroy(gameObject);
+               
+        }
+
         bool reached = Vector2.Distance(transform.position, points[currentPoint].position) <= .1f;
         if (reached){
             currentPoint++;
@@ -72,21 +113,7 @@ public class RobotScript : MonoBehaviour
         
         transform.Translate(goal.normalized * speed * Time.deltaTime);
 
-        if(currentPoint==12)
-        {
-            if(robots!=null){
-
-                if(robots.Count == 1)
-                {
-                    GameObject.Find("Wave").GetComponent<WaveScript>().restarted = false;
-                }
-                robots.Dequeue();
-
-            }     
-    
-            Destroy(gameObject);
-               
-        }
+        
 
         
 
