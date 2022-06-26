@@ -94,7 +94,9 @@ public class RobotScript : MonoBehaviour
 
         if(currentPoint==11){
             if(robots!=null){
-
+                if(robots.Count==1){
+                    GameObject.Find("Wave").GetComponent<WaveScript>().restarted=false;
+                }
                 robots.Dequeue();
             }
             Destroy(gameObject);
