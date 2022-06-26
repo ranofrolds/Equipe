@@ -37,12 +37,15 @@ public class BoxScript : MonoBehaviour
 
     }
 
-    void changeStatus(string newStatus){
+    public void changeStatus(string newStatus){
         if(newStatus=="Loading"){
             this.status = newStatus;
             StartCoroutine(delay(2));
         }
         else if(newStatus=="Ready"){
+            this.status=newStatus;
+        }
+        else if(newStatus=="Unavailable"){
             this.status=newStatus;
         }
     }
