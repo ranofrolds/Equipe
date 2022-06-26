@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
-    public int heldItemId = -1;
+    public Item heldItem;
+    public Item nothing;
+
 
     public BoxManager boxManager;
     public RobotManager robotManager;
@@ -45,9 +47,7 @@ public class PlayerController : MonoBehaviour
 
         robotDetect();
        
-        if(heldItemId == -1) heldSprite.sprite = null;
-        else heldSprite.sprite = boxManager.sprites[heldItemId];
-
+        heldSprite.sprite = heldItem.sprite;
 
     }
 
@@ -100,14 +100,15 @@ public class PlayerController : MonoBehaviour
 
             robotScript.selected = true;
 
-            if (Input.GetButtonDown("Pegar") && heldItemId != -1)
+            //se clicou pra inserir & está segurando alguma coisa
+            if (Input.GetButtonDown("Pegar") && heldItem.idItemType != -1)
             {
 
                 //se a parte foi inserida com sucesso
-                if (robotScript.insertPart(heldItemId))
+                if (robotScript.insertPart(heldItem))
                 {
                     //tirar item da mão
-                    heldItemId = -1;
+                    heldItem = nothing;
                 }
                 
             }
@@ -152,19 +153,19 @@ public class PlayerController : MonoBehaviour
 
             boxScript.selected = true;
 
-            if (Input.GetButtonDown("Pegar") && heldItemId == -1)
+            if (Input.GetButtonDown("Pegar") && heldItem == nothing)
             {
-                int picked = boxScript.pickItem();
-                if(picked != -2)
+                Item picked = boxScript.pickItem();
+                if(picked != null)
                 {
-                    heldItemId = picked;
+                    heldItem = picked;
                 }
             }
             else if (Input.GetButtonDown("Pegar") && boxScript.status == "Trash")
             {
 
 
-                heldItemId = boxScript.pickItem();
+                heldItem = nothing;
 
 
             }

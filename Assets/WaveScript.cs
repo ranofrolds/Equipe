@@ -29,7 +29,6 @@ public class WaveScript : MonoBehaviour
         done.Add(0);
 
         GameObject currentRobot = Instantiate(robot);
-        generateRobot(currentRobot);
         robots.Enqueue(currentRobot);
         robotManager.robots.Add(currentRobot.GetComponent<RobotScript>());
         StartCoroutine(delay(delayBetweenRobots));
@@ -62,7 +61,6 @@ public class WaveScript : MonoBehaviour
             yield return new WaitForSeconds(delay);
             
             GameObject currentRobot = Instantiate(robot);
-            generateRobot(currentRobot);
             robots.Enqueue(currentRobot);
             robotManager.robots.Add(currentRobot.GetComponent<RobotScript>());
         }
@@ -72,107 +70,5 @@ public class WaveScript : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         Restart();
-    }
-
-
-    void generateWaveBox(){
-        List<BoxScript> boxes = GameObject.Find("BoxManager").GetComponent<BoxManager>().boxes;
-        List<BoxScript> boxesPapelao=new List<BoxScript>();
-        List<BoxScript> boxesMetal=new List<BoxScript>();
-
-        foreach(BoxScript box in boxes){
-            //se for de papelao, adiciona no boxes papelao
-            if(box.boxType=="Papelao"){
-                boxesPapelao.Add(box);
-            }
-            else if(box.boxType=="Metal"){
-                boxesMetal.Add(box);
-            }
-            //se for de metal adiciona no boxes metal
-        }
-
-        //papelao 17 max
-        //metal 8 max
-        int papelao=0, metal=0;
-
-        if(idWave>0){
-            if(idWave <= 2){
-                papelao=6;
-                //ativar só algumas de papelao
-            }
-            else if(idWave <=5){
-                papelao=12;
-               //ativar mais algumas de papelao
-            }
-            else if(idWave <=8){
-                papelao=17;
-                //ativar todas de papelao
-            }
-            else if(idWave <=12){
-                metal=4;
-                //ativar algumas de metal
-            }
-            else{
-                metal=8;
-                //ativar todas de metal
-            }
-        }
-
-        for(int i=0; i<papelao;i++){
-            //ativa as de papelao
-            int rnd=Random.Range(0, 17);
-            while(boxesPapelao[rnd].status=="Ready" || boxesPapelao[rnd].status=="Loading"){
-                rnd=Random.Range(0, 17);
-            }
-            boxesPapelao[rnd].status="Ready";
-        }
-
-        for(int i=0; i<metal;i++){
-            //ativa as de metal
-            int rnd=Random.Range(0, 17);
-            while(boxesMetal[rnd].status=="Ready" || boxesMetal[rnd].status=="Loading"){
-                rnd=Random.Range(0, 17);
-            }
-            boxesMetal[rnd].status="Ready";
-        }
-
-    }
-    void generateRobot(GameObject robot){
-        int min=0, max=0;
-        /*
-        wave 1 - 2 -> 2 peças
-        wave 3 - 5 ->2 - 3 peças
-        wave  6- 8 -> 2- 4 
-        wave 8 - 12 -> 3 - 5
-        wave 12+ -> 5
-        */
-
-        if(idWave>0){
-            if(idWave <= 2){
-                min=1;
-                max=2;
-            }
-            else if(idWave <=5){
-                min=2;
-                max=3;
-            }
-            else if(idWave <=8){
-                min=2;
-                max=4;
-            }
-            else if(idWave <=12){
-                min=3;
-                max=5;
-            }
-            else{
-                min=5;
-                max=5;
-            }
-        }
-
-        if(min !=0 && max!=0 ){
-            int n= Random.Range(min, max+1);
-            robot.GetComponent<RobotScript>().robotParts = new bool[n];
-        }
     }
 }

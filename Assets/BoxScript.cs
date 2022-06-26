@@ -6,8 +6,7 @@ public class BoxScript : MonoBehaviour
 {
     // Start is called before the first frame update
     
-    public int itemTypeId;
-    public int idSprite;
+    public Item item;
     public string status;
 
     public string boxType;
@@ -30,7 +29,7 @@ public class BoxScript : MonoBehaviour
         if(transform.childCount > 0) 
         {
             if (status == "Trash") itemSprite.sprite = manager.trash;
-            else if(status != "Loading") itemSprite.sprite = manager.sprites[idSprite];
+            else if(status != "Loading") itemSprite.sprite = item.sprite;
             else itemSprite.sprite = manager.loading;
             itemSprite.transform.localScale = selected ? (Vector3.one * 2) : Vector3.one;
         }
@@ -59,7 +58,7 @@ public class BoxScript : MonoBehaviour
     }
 
 
-    public int pickItem(){
+    public Item pickItem(){
         if(this.status=="Ready"){
             //pegar o item
 
@@ -69,17 +68,17 @@ public class BoxScript : MonoBehaviour
 
             print("pegou o item");
             
-            return idSprite;
+            return item;
 
         }
         
         else if(this.status == "Trash")
         {
             print ("jogou o item fora");
-            return -1;
+            return null;
         }
 
-        else return -2;
+        else return null;
 
     }
 
