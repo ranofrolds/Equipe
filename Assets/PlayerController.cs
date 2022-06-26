@@ -98,11 +98,21 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown("Pegar") && heldItemId == -1)
             {
                 int picked = boxScript.pickItem();
-                if(picked != -1)
+                if(picked != -2)
                 {
                     heldItemId = picked;
                 }       
             }
+            else if (Input.GetButtonDown("Pegar") && boxScript.status == "Trash")
+            {
+
+
+                heldItemId = boxScript.pickItem();
+
+
+            }
+
+
         }
 
     }

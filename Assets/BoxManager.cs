@@ -5,7 +5,7 @@ using UnityEngine;
 public class BoxManager : MonoBehaviour
 {
 
-    public Sprite loading;
+    public Sprite loading, trash;
     public List<Sprite> sprites = new List<Sprite>();
     public List<BoxScript> boxes = new List<BoxScript>();
 
