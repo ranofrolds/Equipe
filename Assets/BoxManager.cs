@@ -17,6 +17,12 @@ public class BoxManager : MonoBehaviour
         }
 
         
+        
+        
+    }
+
+    void orderBoxes()
+    {
         boxes.Clear();
 
         for(int i=0; i<28;i++){
@@ -41,7 +47,6 @@ public class BoxManager : MonoBehaviour
                 //energia
             }
         }
-        
     }
 
 }

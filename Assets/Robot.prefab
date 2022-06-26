@@ -140,6 +140,7 @@ MonoBehaviour:
   maxScore: 0
   robotManager: {fileID: 0}
   holes: []
+  nothing: {fileID: 11400000, guid: 55d9a7bd55f384e38b18dc284b6a5886, type: 2}
   speed: 1
   selected: 0
 --- !u!212 &192986786

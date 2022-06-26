@@ -18,6 +18,7 @@ public class RobotScript : MonoBehaviour
     WaveScript waveScript;
 
     public List<SpriteRenderer> holes = new List<SpriteRenderer>();
+    public Item nothing;
 
     
     public float speed;
@@ -72,7 +73,7 @@ public class RobotScript : MonoBehaviour
         
         transform.Translate(goal.normalized * speed * Time.deltaTime);
 
-        if(currentPoint==11){
+        if(currentPoint==12){
             if(robots!=null){
 
                 if(robots.Count == 1)
@@ -84,9 +85,13 @@ public class RobotScript : MonoBehaviour
             }
             
 
+         
+
+
         //para cada slot de item
         for(int i = 0; i < robotParts.Count; i++)
         {
+            if(robotParts[i].currentItem == null) robotParts[i].currentItem = nothing;
             bool rightItem = robotParts[i].idRequestedItemType == robotParts[i].currentItem.idItemType;
 
             //se estiver preenchido e certo, adicionar ponto
@@ -95,8 +100,10 @@ public class RobotScript : MonoBehaviour
 
             waveScript.maxScore += maxScore;
             waveScript.score += score;
+            
 
             Destroy(gameObject);
+           
         }
 
         if(done==true){

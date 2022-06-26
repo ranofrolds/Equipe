@@ -60,14 +60,14 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
+    public float radius;
     void robotDetect()
     {
 
         //Detectar se está próximo de um robô
         Collider2D robotCol = null;
         Collider2D[] nearRobots;
-        float radius = .7f;
+        //float radius = 1f;
         nearRobots = Physics2D.OverlapCircleAll(transform.position, radius, robotLayer);
 
 
