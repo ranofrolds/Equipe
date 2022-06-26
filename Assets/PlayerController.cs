@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    public GameObject boxxx;
     public float boxDetectionRadius;
     void FixedUpdate()
     {
@@ -47,22 +48,27 @@ public class PlayerController : MonoBehaviour
 
 
         //Detectar se está próximo de uma caixa
-        GameObject box;
-        Collider2D[] nearBoxes = Physics2D.OverlapCircleAll(transform.position, boxDetectionRadius, boxLayer);
+        GameObject box = null;
+        Collider2D[] nearBoxes;
+        
+        nearBoxes = Physics2D.OverlapCircleAll(transform.position, boxDetectionRadius, boxLayer);
 
 
-        if(nearBoxes.Length > 1)
+        if(nearBoxes.Length >= 1)
         {
-            for(int i = 0; i < nearBoxes.Length; i++)
+            box = nearBoxes[0].gameObject;
+            for(int i = 1; i < nearBoxes.Length; i++)
             {
 
-  
+                float currentDistance = Vector2.Distance(transform.position, box.transform.position);
+                float myDistance = Vector2.Distance(transform.position, nearBoxes[i].transform.position);
+
+                if (myDistance < currentDistance) box = nearBoxes[i].gameObject;
 
             }
         }
-        else box = nearBoxes[0].gameObject;
 
-        
+        boxxx = box;
 
     }
 
