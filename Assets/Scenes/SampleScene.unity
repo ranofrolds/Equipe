@@ -1295,6 +1295,7 @@ GameObject:
   - component: {fileID: 521610092}
   - component: {fileID: 521610091}
   - component: {fileID: 521610090}
+  - component: {fileID: 521610093}
   m_Layer: 3
   m_Name: box27
   m_TagString: Untagged
@@ -1315,7 +1316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: a99a972602b324b0b95b3d9e4a4793bd, type: 2}
-  status: Unavailable
+  status: Energia
   boxType: Energia
   manager: {fileID: 969630866}
   selected: 0
@@ -1368,6 +1369,20 @@ Transform:
   m_Father: {fileID: 969630867}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &521610093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521610089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56273df15491806458726149fd03ae24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energia: 100
+  status: Full
 --- !u!1 &529132556
 GameObject:
   m_ObjectHideFlags: 0
@@ -5848,6 +5863,7 @@ MonoBehaviour:
   delayBetweenRobots: 4
   delayBetweenWaves: 20
   robotManager: {fileID: 1323283764}
+  waveDifficulty: 0
 --- !u!4 &1742345461
 Transform:
   m_ObjectHideFlags: 0

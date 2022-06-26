@@ -11,7 +11,7 @@ public class BoxManager : MonoBehaviour
 
     void Start(){
         foreach(BoxScript box in boxes){
-            if(box.status!="Trash"){
+            if(box.status!="Trash" && box.status!="Energia"){
                 box.changeStatus("Unavailable");
             }
         }

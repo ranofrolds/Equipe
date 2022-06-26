@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour
 
             boxScript.selected = true;
 
-            if (Input.GetButtonDown("Pegar") && heldItem == nothing)
+            if (Input.GetButtonDown("Pegar") && heldItem == nothing && boxScript.status != "Energia")
             {
                 Item picked = boxScript.pickItem();
                 if(picked != null)
@@ -169,7 +169,7 @@ public class PlayerController : MonoBehaviour
 
 
             }
-            else if (Input.GetButtonDown("Pegar") && boxScript.boxType == "Energia")
+            else if (Input.GetButtonDown("Pegar") && boxScript.status == "Energia")
             {
                 print("ENTROU");
                 if(GameObject.Find("box27").GetComponent<EnergyBoxScript>().status!="OK" && GameObject.Find("box27").GetComponent<EnergyBoxScript>().status!="Charging"&&
