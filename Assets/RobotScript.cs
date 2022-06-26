@@ -7,7 +7,6 @@ public class RobotScript : MonoBehaviour
     int idRobot;
 
     public List<ItemSlot> robotParts = new List<ItemSlot>();
-    bool done;
 
     public int score;
     public int maxScore;
@@ -50,10 +49,6 @@ public class RobotScript : MonoBehaviour
 
         //posiçao do robo = ponto inicial
         transform.position = points[0].position;
-
-        done=false;
-        
-
 
     }
 
@@ -101,14 +96,15 @@ public class RobotScript : MonoBehaviour
             waveScript.maxScore += maxScore;
             waveScript.score += score;
             
+            if(score==maxScore){
+                GameObject.Find("Wave").GetComponent<WaveScript>().done[GameObject.Find("Wave").GetComponent<WaveScript>().idWave]+=1;
+            }
 
             Destroy(gameObject);
            
         }
 
-        if(done==true){
-            GameObject.Find("Wave").GetComponent<WaveScript>().done[GameObject.Find("Wave").GetComponent<WaveScript>().idWave]+=1;
-        }
+        
 
     }
 
