@@ -12,9 +12,12 @@ public class PlayerController : MonoBehaviour
     
     float h, v;
 
+    LayerMask boxLayer;
+
 
     void Start()
     {
+        boxLayer = LayerMask.GetMask("Box");
         r = GetComponent<Rigidbody2D>();
     }
 
@@ -25,21 +28,41 @@ public class PlayerController : MonoBehaviour
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");        
 
-        //DETECTAR INPUT
         doTeleport();
     }
 
 
-
+    public float boxDetectionRadius;
     void FixedUpdate()
     {
 
-       Vector2 novaVelocidade = new Vector2();
-        
-        novaVelocidade.x = Velocidade * h;
-        novaVelocidade.y = Velocidade * v;
+        //Movimentação
+        Vector2 newSpeed = new Vector2();
 
-        r.velocity = novaVelocidade;
+        
+        newSpeed.x = Velocidade * h;
+        newSpeed.y = Velocidade * v;
+
+        r.velocity = newSpeed;
+
+
+        //Detectar se está próximo de uma caixa
+        GameObject box;
+        Collider2D[] nearBoxes = Physics2D.OverlapCircleAll(transform.position, boxDetectionRadius, boxLayer);
+
+
+        if(nearBoxes.Length > 1)
+        {
+            for(int i = 0; i < nearBoxes.Length; i++)
+            {
+
+  
+
+            }
+        }
+        else box = nearBoxes[0].gameObject;
+
+        
 
     }
 

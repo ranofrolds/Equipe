@@ -32,7 +32,7 @@ public class RobotMovement : MonoBehaviour
         transform.Translate(goal.normalized * speed * Time.deltaTime);
 
 
-
+        
 
     }
 }
