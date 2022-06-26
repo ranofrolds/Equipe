@@ -35,7 +35,7 @@ public class EnergyBoxScript : MonoBehaviour
 
     public IEnumerator delayDischarge(float delay, int waveDifficulty)
     {
-        while(energia>0){
+        while(energia>0&&status!="Charging"){
             yield return new WaitForSeconds(delay);
             energia-=waveDifficulty;
             if(energia<=0){
@@ -46,6 +46,9 @@ public class EnergyBoxScript : MonoBehaviour
             }
             
         }
-        status="NoBattery";
+        if(energia==0){
+             status="NoBattery";
+        }
+       
     }
 }

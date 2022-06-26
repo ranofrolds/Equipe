@@ -27,7 +27,7 @@ public class WaveScript : MonoBehaviour
 
     public RobotManager robotManager;
 
-    int waveDifficulty;
+    public int waveDifficulty;
     
 
 

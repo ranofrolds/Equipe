@@ -44,6 +44,7 @@ public class BoxManager : MonoBehaviour
             }
             else{
                 boxes[i].boxType="Energia";
+                boxes[i].status="Energia";
                 //energia
             }
         }

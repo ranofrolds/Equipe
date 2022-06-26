@@ -169,6 +169,17 @@ public class PlayerController : MonoBehaviour
 
 
             }
+            else if (Input.GetButtonDown("Pegar") && boxScript.boxType == "Energia")
+            {
+                print("ENTROU");
+                if(GameObject.Find("box27").GetComponent<EnergyBoxScript>().status!="OK" && GameObject.Find("box27").GetComponent<EnergyBoxScript>().status!="Charging"&&
+                GameObject.Find("box27").GetComponent<EnergyBoxScript>().status!="Full"){
+                    GameObject.Find("box27").GetComponent<EnergyBoxScript>().status="Charging";
+                    GameObject.Find("box27").GetComponent<EnergyBoxScript>().carregarEnergia(GameObject.Find("Wave").GetComponent<WaveScript>().waveDifficulty);
+                }
+                
+
+            }
 
 
         }
