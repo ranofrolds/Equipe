@@ -9,15 +9,19 @@ public class BoxScript : MonoBehaviour
     public int idItem;
     public string status;
 
-    void Start()
-    {
-        
-    }
+    public BoxManager manager;
 
-    // Update is called once per frame
+    
     void Update()
     {
         
+        //Se tem filho
+        if(transform.childCount > 0)
+        {
+            SpriteRenderer itemSprite = transform.Find("ItemSprite").GetComponent<SpriteRenderer>();
+            itemSprite.sprite = manager.sprites[idItem];
+        }
+
     }
 
     void changeStatus(string newStatus){

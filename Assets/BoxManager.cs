@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BoxManager : MonoBehaviour
 {
-    public List<BoxScript> boxes = new List<BoxScript>();
+    public List<Sprite> sprites = new List<Sprite>();
 
-
-    
 }

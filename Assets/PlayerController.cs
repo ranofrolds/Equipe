@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float Velocidade;
+    public float speed;
+    public int heldItemId = -1;
+
+    public BoxManager boxManager;
+
+
     Transform teleport1, teleport2;
 
-    public int heldItemId = -1;
+    SpriteRenderer heldSprite;
 
     bool teleported=false;
     Rigidbody2D r;
@@ -19,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        heldSprite = transform.Find("HeldSprite").GetComponent<SpriteRenderer>();
         boxLayer = LayerMask.GetMask("Box");
         r = GetComponent<Rigidbody2D>();
         teleport1 = GameObject.Find("teleport1").transform;
@@ -34,7 +40,26 @@ public class PlayerController : MonoBehaviour
 
         doTeleport();
 
+        boxDetect();
+       
+        if(heldItemId == -1) heldSprite.sprite = null;
+        else heldSprite.sprite = boxManager.sprites[heldItemId];
 
+
+    }
+
+    void FixedUpdate()
+    {
+
+        Move();
+
+
+
+    }
+
+
+    void boxDetect()
+    {
         //Detectar se está próximo de uma caixa
         Collider2D boxCol = null;
         Collider2D[] nearBoxes;
@@ -56,7 +81,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        boidmwobim = boxCol;
         BoxScript boxScript = boxCol?.gameObject.GetComponent<BoxScript>();
 
         if(boxScript != null && Input.GetButtonDown("Pegar"))
@@ -64,21 +88,16 @@ public class PlayerController : MonoBehaviour
             heldItemId = boxScript.pickItem();
         }
     }
-
-    public Collider2D boidmwobim;
-    void FixedUpdate()
+    void Move()
     {
-
         //Movimentação
         Vector2 newSpeed = new Vector2();
 
         
-        newSpeed.x = Velocidade * h;
-        newSpeed.y = Velocidade * v;
+        newSpeed.x = speed * h;
+        newSpeed.y = speed * v;
 
         r.velocity = newSpeed;
-
-
 
     }
 
@@ -100,7 +119,4 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void pickItem(){
-        
-    }
 }
