@@ -11,16 +11,29 @@ public class BoxScript : MonoBehaviour
 
     public BoxManager manager;
 
-    
+    public bool selected;
+
+    SpriteRenderer itemSprite;
+
+    void Start()
+    {   
+
+        if(transform.childCount > 0) itemSprite = transform.Find("ItemSprite").GetComponent<SpriteRenderer>();
+            
+
+    }
+
     void Update()
     {
-        
         //Se tem filho
-        if(transform.childCount > 0)
+        if(transform.childCount > 0) 
         {
-            SpriteRenderer itemSprite = transform.Find("ItemSprite").GetComponent<SpriteRenderer>();
-            itemSprite.sprite = manager.sprites[idItem];
+            if(status != "Loading") itemSprite.sprite = manager.sprites[idItem];
+            else itemSprite.sprite = manager.loading;
+            itemSprite.transform.localScale = selected ? (Vector3.one * 2) : Vector3.one;
         }
+
+        
 
     }
 

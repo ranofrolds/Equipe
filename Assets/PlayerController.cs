@@ -72,7 +72,6 @@ public class PlayerController : MonoBehaviour
             boxCol = nearBoxes[0];
             for(int i = 1; i < nearBoxes.Length; i++)
             {
-
                 float currentDistance = Vector2.Distance(transform.position, boxCol.bounds.center);
                 float myDistance = Vector2.Distance(transform.position, nearBoxes[i].bounds.center);
 
@@ -83,10 +82,29 @@ public class PlayerController : MonoBehaviour
 
         BoxScript boxScript = boxCol?.gameObject.GetComponent<BoxScript>();
 
-        if(boxScript != null && Input.GetButtonDown("Pegar"))
+        for(int i = 0; i < boxManager.boxes.Count; i++)
         {
-            heldItemId = boxScript.pickItem();
+                
+                boxManager.boxes[i].selected = false;
+              
         }
+
+        if(boxScript != null) 
+        {
+            
+
+            boxScript.selected = true;
+
+            if (Input.GetButtonDown("Pegar") && heldItemId == -1)
+            {
+                int picked = boxScript.pickItem();
+                if(picked != -1)
+                {
+                    heldItemId = picked;
+                }       
+            }
+        }
+
     }
     void Move()
     {
