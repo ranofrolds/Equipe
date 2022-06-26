@@ -6,8 +6,14 @@ using UnityEngine;
 public class ItemSlot : ScriptableObject
 {
     
-    public int idItemType;
+
+    public Sprite icon;
+
+    public int idRequestedItemType;
+    public Item currentItem;
 
     public bool filled;
+
+
 
 }

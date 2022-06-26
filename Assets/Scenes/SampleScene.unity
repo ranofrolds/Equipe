@@ -5519,13 +5519,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2a772610b0cfe47a262aebdd5d2e2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  armIcon: {fileID: 21300000, guid: 9206e6b16043c4dd5a3a9eed00296089, type: 3}
+  ballIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   robot: {fileID: 3324634989954844573, guid: 5df8e4a7ba812c54d87237774558cfc6, type: 3}
   idWave: 0
   done: 
-  speed: 10
+  speed: 1
+  score: 0
+  maxScore: 0
   restarted: 0
-  delayBetweenRobots: 1
-  delayBetweenWaves: 1
+  delayBetweenRobots: 4
+  delayBetweenWaves: 20
   robotManager: {fileID: 1323283764}
 --- !u!4 &1742345461
 Transform:

@@ -5,6 +5,10 @@ using UnityEngine;
 public class WaveScript : MonoBehaviour
 {
    
+    public Sprite armIcon, ballIcon;
+
+    [Space(15)]
+
     public GameObject robot;
     public int idWave;
     public Queue<GameObject> robots=new Queue<GameObject>();
@@ -22,6 +26,8 @@ public class WaveScript : MonoBehaviour
 
 
     public RobotManager robotManager;
+
+    
 
 
     void Start()
@@ -200,7 +206,9 @@ public class WaveScript : MonoBehaviour
             }
         }
 
-        if(min !=0 && max!=0 ){
+        
+        if(min !=0 && max!=0 )
+        {
             int quantidadeItens = Random.Range(min, max+1);
 
             for(int i = 0; i < quantidadeItens; i++)
@@ -210,9 +218,14 @@ public class WaveScript : MonoBehaviour
                 ItemSlot newSlot = (ItemSlot)ScriptableObject.CreateInstance("ItemSlot");
 
                 //gerar random o tipo de item que vai ser
-                newSlot.idItemType = Random.Range(0, robotManager.maxItemTypeId + 1);
+                newSlot.idRequestedItemType = Random.Range(0, robotManager.maxItemTypeId + 1);
                 //definir que o slot não foi preenchido
                 newSlot.filled = false;
+
+                //btaço
+                if(newSlot.idRequestedItemType == 0) newSlot.icon = armIcon;
+                //bola
+                else if(newSlot.idRequestedItemType == 1) newSlot.icon = ballIcon;
 
                 //adicionar slot a lista de slots
                 robotScript.robotParts.Add(newSlot);
@@ -227,6 +240,7 @@ public class WaveScript : MonoBehaviour
         for(int i = 0; i < robotScript.robotParts.Count; i++)
         {
             robotScript.holes[i].enabled = true;
+            robotScript.holes[i].sprite = robotScript.robotParts[i].icon;
         }
 
     }
