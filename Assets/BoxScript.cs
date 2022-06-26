@@ -5,9 +5,9 @@ using UnityEngine;
 public class BoxScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    int idBox;
-    int idItem;
-    string status;
+    public int idBox;
+    public int idItem;
+    public string status;
 
     void Start()
     {
@@ -37,13 +37,22 @@ public class BoxScript : MonoBehaviour
     }
 
 
-    void pickItem(){
+    public int pickItem(){
         if(this.status=="Ready"){
             //pegar o item
+
+
+            //mudar o status para loading
+            changeStatus("Loading");
+
+            print("pegou o item");
+            
+            return idItem;
+
         }
         
-        //mudar o status para loading
-        changeStatus("Loading");
+        else return -1;
+
     }
 
     

@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float Velocidade;
-    public Transform teleport1, teleport2;
+    Transform teleport1, teleport2;
+
+    public int heldItemId = -1;
 
     bool teleported=false;
     Rigidbody2D r;
@@ -19,6 +21,8 @@ public class PlayerController : MonoBehaviour
     {
         boxLayer = LayerMask.GetMask("Box");
         r = GetComponent<Rigidbody2D>();
+        teleport1 = GameObject.Find("teleport1").transform;
+        teleport2 = GameObject.Find("teleport2").transform;
     }
 
 
@@ -29,11 +33,39 @@ public class PlayerController : MonoBehaviour
         v = Input.GetAxisRaw("Vertical");        
 
         doTeleport();
+
+
+        //Detectar se está próximo de uma caixa
+        Collider2D boxCol = null;
+        Collider2D[] nearBoxes;
+        nearBoxes = Physics2D.OverlapCircleAll(transform.position, .5f, boxLayer);
+        Debug.DrawLine(transform.position, transform.position + (Vector3.right * 0.5f));
+
+
+        if(nearBoxes.Length >= 1)
+        {
+            boxCol = nearBoxes[0];
+            for(int i = 1; i < nearBoxes.Length; i++)
+            {
+
+                float currentDistance = Vector2.Distance(transform.position, boxCol.bounds.center);
+                float myDistance = Vector2.Distance(transform.position, nearBoxes[i].bounds.center);
+
+                if (myDistance < currentDistance) boxCol = nearBoxes[i];
+
+            }
+        }
+
+        boidmwobim = boxCol;
+        BoxScript boxScript = boxCol?.gameObject.GetComponent<BoxScript>();
+
+        if(boxScript != null && Input.GetButtonDown("Pegar"))
+        {
+            heldItemId = boxScript.pickItem();
+        }
     }
 
-
-    public GameObject boxxx;
-    public float boxDetectionRadius;
+    public Collider2D boidmwobim;
     void FixedUpdate()
     {
 
@@ -47,28 +79,6 @@ public class PlayerController : MonoBehaviour
         r.velocity = newSpeed;
 
 
-        //Detectar se está próximo de uma caixa
-        GameObject box = null;
-        Collider2D[] nearBoxes;
-        
-        nearBoxes = Physics2D.OverlapCircleAll(transform.position, boxDetectionRadius, boxLayer);
-
-
-        if(nearBoxes.Length >= 1)
-        {
-            box = nearBoxes[0].gameObject;
-            for(int i = 1; i < nearBoxes.Length; i++)
-            {
-
-                float currentDistance = Vector2.Distance(transform.position, box.transform.position);
-                float myDistance = Vector2.Distance(transform.position, nearBoxes[i].transform.position);
-
-                if (myDistance < currentDistance) box = nearBoxes[i].gameObject;
-
-            }
-        }
-
-        boxxx = box;
 
     }
 
