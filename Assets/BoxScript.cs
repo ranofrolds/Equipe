@@ -5,8 +5,9 @@ using UnityEngine;
 public class BoxScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int idBox;
-    public int idItem;
+    
+    public int itemTypeId;
+    public int idSprite;
     public string status;
 
     public BoxManager manager;
@@ -28,7 +29,7 @@ public class BoxScript : MonoBehaviour
         if(transform.childCount > 0) 
         {
             if (status == "Trash") itemSprite.sprite = manager.trash;
-            else if(status != "Loading") itemSprite.sprite = manager.sprites[idItem];
+            else if(status != "Loading") itemSprite.sprite = manager.sprites[idSprite];
             else itemSprite.sprite = manager.loading;
             itemSprite.transform.localScale = selected ? (Vector3.one * 2) : Vector3.one;
         }
@@ -67,7 +68,7 @@ public class BoxScript : MonoBehaviour
 
             print("pegou o item");
             
-            return idItem;
+            return idSprite;
 
         }
         
