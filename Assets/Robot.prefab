@@ -135,8 +135,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f995c5b664dcc4c49a9476fa0f4be4a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  robotParts: 
-  boxManager: {fileID: 0}
+  robotParts: []
+  score: 0
+  maxScore: 0
+  robotManager: {fileID: 0}
   holes: []
   speed: 1
   selected: 0
@@ -180,7 +182,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: -3
   m_Sprite: {fileID: 21300000, guid: 6c6e292dd0b234cbfb172a335fbe8207, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -18,8 +18,12 @@ public class BoxScript : MonoBehaviour
     void Start()
     {   
 
-        if(transform.childCount > 0) itemSprite = transform.Find("ItemSprite").GetComponent<SpriteRenderer>();
-        
+        if(transform.childCount > 0) 
+        {
+            itemSprite = transform.Find("ItemSprite").GetComponent<SpriteRenderer>();
+            itemSprite.sortingOrder = 2;
+        }
+
 
     }
 
@@ -33,6 +37,7 @@ public class BoxScript : MonoBehaviour
             else if(status != "Loading") itemSprite.sprite = item.sprite;
             else itemSprite.sprite = manager.loading;
             itemSprite.transform.localScale = selected ? (Vector3.one * 2) : Vector3.one;
+            
         }
 
         

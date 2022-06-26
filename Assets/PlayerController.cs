@@ -192,13 +192,17 @@ public class PlayerController : MonoBehaviour
             teleported=false;
         }
 
-        if(Vector2.Distance(transform.position,teleport1.position)<0.5f&&teleported==false){
+        //teleport 1 = direita
+        //se mais pra direita do que o teleport 1, teleportar
+        bool toTheRight = transform.position.x > teleport1.position.x;
+        if(toTheRight&&teleported==false){
             teleported=true;
             Vector2 novo= new Vector2(teleport2.position.x+.6f,teleport2.position.y);
             transform.position=novo;
         }
 
-        if(Vector2.Distance(transform.position,teleport2.position)<0.5f&&teleported==false){
+        bool toTheLeft = transform.position.x < teleport2.position.x;
+        if(toTheLeft&&teleported==false){
             teleported=true;
             Vector2 novo= new Vector2(teleport1.position.x-.6f,teleport1.position.y+.2f);
             transform.position=novo;
