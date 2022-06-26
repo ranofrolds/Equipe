@@ -12,6 +12,8 @@ public class WaveScript : MonoBehaviour
     public List<int>done=new List<int>();
     public float speed;
     
+    public int score;
+    public int maxScore;
     public bool restarted=false;
 
 
@@ -81,6 +83,8 @@ public class WaveScript : MonoBehaviour
         List<BoxScript> boxesPapelao=new List<BoxScript>();
         List<BoxScript> boxesMetal=new List<BoxScript>();
 
+
+
         foreach(BoxScript box in boxes){
             //se for de papelao, adiciona no boxes papelao
             if(box.boxType=="Papelao"){
@@ -93,35 +97,49 @@ public class WaveScript : MonoBehaviour
         }
 
         //papelao 17 max
-        //metal 8 max
+        //metal 7 max
         int papelao=0, metal=0;
 
-        if(idWave>0){
-            if(idWave <= 2){
+        if(idWave>0)
+        {
+            if(idWave == 1){
                 papelao=6;
                 //ativar só algumas de papelao
             }
-            else if(idWave <=5){
-                papelao=6;
+            else if(idWave == 3){
+                papelao=3;
                //ativar mais algumas de papelao
             }
-            else if(idWave <=8){
-                papelao=5;
+            else if(idWave == 5){
+                papelao=4;
+               //ativar mais algumas de papelao
+            }
+            else if(idWave ==7){
+                papelao=4;
                 //ativar todas de papelao
             }
-            else if(idWave <=12){
-                metal=4;
+            else if(idWave ==10){
+                metal=1;
                 //ativar algumas de metal
             }
-            else{
+            else if(idWave ==13){
+                metal=2;
+                //ativar algumas de metal
+            }
+            else if(idWave == 18)
+            {
                 metal=4;
                 //ativar todas de metal
             }
         }
 
         for(int i=0; i<papelao;i++){
+
+    
             //ativa as de papelao
             int rnd=Random.Range(0, 17);
+            
+
             while(boxesPapelao[rnd].status=="Ready" || boxesPapelao[rnd].status=="Loading"){
                 rnd=Random.Range(0, 17);
             }
@@ -130,9 +148,9 @@ public class WaveScript : MonoBehaviour
 
         for(int i=0; i<metal;i++){
             //ativa as de metal
-            int rnd=Random.Range(17, 24);
+            int rnd=Random.Range(0, 7);
             while(boxesMetal[rnd].status=="Ready" || boxesMetal[rnd].status=="Loading"){
-                rnd=Random.Range(17, 24);
+                rnd=Random.Range(0, 7);
             }
             boxesMetal[rnd].status="Ready";
         }
@@ -187,15 +205,20 @@ public class WaveScript : MonoBehaviour
 
             for(int i = 0; i < quantidadeItens; i++)
             {
-                int newItem = Random.Range(0, robotManager.currentItems.Count + 1);
 
+                //Criar novo slot de item
                 ItemSlot newSlot = (ItemSlot)ScriptableObject.CreateInstance("ItemSlot");
 
+                //gerar random o tipo de item que vai ser
                 newSlot.idItemType = Random.Range(0, robotManager.maxItemTypeId + 1);
+                //definir que o slot não foi preenchido
                 newSlot.filled = false;
 
-
+                //adicionar slot a lista de slots
                 robotScript.robotParts.Add(newSlot);
+
+                //Aumentar o score máximo
+                robotScript.maxScore += 10;
             }
             
         }

@@ -9,11 +9,13 @@ public class RobotScript : MonoBehaviour
     public List<ItemSlot> robotParts = new List<ItemSlot>();
     bool done;
 
-
+    public int score;
+    public int maxScore;
 
     List<Transform> points = new List<Transform>();
 
     public RobotManager robotManager;
+    WaveScript waveScript;
 
     public List<SpriteRenderer> holes = new List<SpriteRenderer>();
 
@@ -41,6 +43,9 @@ public class RobotScript : MonoBehaviour
 
         //pegar robotManager
         robotManager = GameObject.Find("RobotManager").GetComponent<RobotManager>();
+
+        //pegar wave script
+        waveScript = GameObject.Find("Wave").GetComponent<WaveScript>();
 
         //posiçao do robo = ponto inicial
         transform.position = points[0].position;
@@ -77,6 +82,8 @@ public class RobotScript : MonoBehaviour
                 robots.Dequeue();
 
             }
+            waveScript.maxScore += maxScore;
+            waveScript.maxScore += score;
             Destroy(gameObject);
         }
 
@@ -92,27 +99,48 @@ public class RobotScript : MonoBehaviour
         //para cada slot de item
         for(int i = 0; i < robotParts.Count; i++)
         {
-            print(i);
-            //se o id do item for diferente do pedido, passar pro próximo slot
             
-
-            //se o id do item colocado for igual o id pedido pelo slot, e nenhum item ja foi colocado
-            if(!(insertedPart.idItemType != robotParts[i].idItemType))
+            //se o item certo foi inserido
+            if(insertedPart.idItemType== robotParts[i].idItemType)
             {
-            if (anySlotFilled == false && robotParts[i].filled == false)
-            {
+                if (anySlotFilled == false && robotParts[i].filled == false)
+                {
 
-                //marcar que ja preencheu um slot
-                anySlotFilled = true;
+                    //marcar que ja preencheu um slot
+                    anySlotFilled = true;
 
-                //trocar o sprite
-                holes[i].color = Color.white;
-                holes[i].sprite = insertedPart.sprite;
+                    //trocar o sprite
+                    holes[i].color = Color.white;
+                    holes[i].sprite = insertedPart.sprite;
 
-                //marcar como colocado
-                robotParts[i].filled = true;
+                    //marcar como colocado
+                    robotParts[i].filled = true;
 
+                    //aumentar o score
+                    score += 10;
+
+                }
             }
+
+            //se o item errado for inserido
+            else
+            {
+                if (anySlotFilled == false && robotParts[i].filled == false)
+                {
+
+                    //marcar que ja preencheu um slot
+                    anySlotFilled = true;
+
+                    //trocar o sprite
+                    holes[i].color = Color.white;
+                    holes[i].sprite = insertedPart.sprite;
+
+                    //marcar como colocado
+                    robotParts[i].filled = true;
+
+                    //como foi o item errado não aumenta o score
+
+                }
             }
             
         }
