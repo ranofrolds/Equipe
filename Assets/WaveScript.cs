@@ -27,6 +27,7 @@ public class WaveScript : MonoBehaviour
 
     public RobotManager robotManager;
 
+    int waveDifficulty;
     
 
 
@@ -40,6 +41,7 @@ public class WaveScript : MonoBehaviour
         generateRobot(currentRobot.GetComponent<RobotScript>());
         robots.Enqueue(currentRobot);
         robotManager.robots.Add(currentRobot.GetComponent<RobotScript>());
+        
         StartCoroutine(delay(delayBetweenRobots));
         
     }
@@ -58,11 +60,16 @@ public class WaveScript : MonoBehaviour
 
     void Update()
     {
-
+        print(GameObject.Find("box27").GetComponent<EnergyBoxScript>().energia);
         if(robots.Count==0 && restarted==false){
             //BOTAR UM DELAY PARA COMEÇAR PROXIMA WAVE VVV
             restarted=true;
             StartCoroutine(delayNextWave(delayBetweenWaves));
+        }
+
+        if(GameObject.Find("box27").GetComponent<EnergyBoxScript>().status=="Full"){
+            GameObject.Find("box27").GetComponent<EnergyBoxScript>().status="OK";
+            StartCoroutine(GameObject.Find("box27").GetComponent<EnergyBoxScript>().delayDischarge(1,waveDifficulty));
         }
     }
 
@@ -77,6 +84,7 @@ public class WaveScript : MonoBehaviour
             robotManager.robots.Add(currentRobot.GetComponent<RobotScript>());
         }
     }
+
 
     IEnumerator delayNextWave(float delay)
     {
@@ -109,31 +117,38 @@ public class WaveScript : MonoBehaviour
         if(idWave>0)
         {
             if(idWave == 1){
+                waveDifficulty=1;
                 papelao=6;
                 //ativar só algumas de papelao
             }
             else if(idWave == 3){
+                waveDifficulty=2;
                 papelao=3;
                //ativar mais algumas de papelao
             }
             else if(idWave == 5){
+                waveDifficulty=3;
                 papelao=4;
                //ativar mais algumas de papelao
             }
             else if(idWave ==7){
+                 waveDifficulty=4;
                 papelao=4;
                 //ativar todas de papelao
             }
             else if(idWave ==10){
+                 waveDifficulty=5;
                 metal=1;
                 //ativar algumas de metal
             }
             else if(idWave ==13){
+                 waveDifficulty=6;
                 metal=2;
                 //ativar algumas de metal
             }
             else if(idWave == 18)
             {
+                waveDifficulty=7;
                 metal=4;
                 //ativar todas de metal
             }
