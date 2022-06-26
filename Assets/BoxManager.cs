@@ -15,28 +15,24 @@ public class BoxManager : MonoBehaviour
                 box.changeStatus("Unavailable");
             }
         }
-    }
 
-    void generateWaveBox(){
-        int idWave=GameObject.Find("Wave").GetComponent<WaveScript>().idWave;
-        if(idWave>0){
-            if(idWave <= 2){
-                //ativar só algumas de papelao
+        for(int i=0; i<28;i++){
+            //colocar seus respectivos BOX TYPES
+
+            if(i>=0 && i<17){
+                //papelao
             }
-            else if(idWave <=5){
-               //ativar mais algumas de papelao
+            else if(i>=17 && i<24){
+                //metal
             }
-            else if(idWave <=8){
-                //ativar todas de papelao
-            }
-            else if(idWave <=12){
-                //ativar algumas de metal
+            else if(i>=24 && i<27){
+                //lixeira
             }
             else{
-                //ativar todas de metal
+                //energia
             }
         }
-
-
+        
     }
+
 }

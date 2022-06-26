@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 1168065}
   - component: {fileID: 1168064}
   m_Layer: 3
-  m_Name: box2 (2)
+  m_Name: box17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,9 +153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 1
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &1168065
@@ -216,7 +217,7 @@ GameObject:
   - component: {fileID: 31244081}
   - component: {fileID: 31244080}
   m_Layer: 3
-  m_Name: box2 (10)
+  m_Name: box10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,9 +235,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 0
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &31244081
@@ -298,7 +300,7 @@ GameObject:
   - component: {fileID: 71096347}
   - component: {fileID: 71096346}
   m_Layer: 3
-  m_Name: box2 (7)
+  m_Name: box5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -316,9 +318,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 1
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &71096347
@@ -382,7 +385,7 @@ GameObject:
   - component: {fileID: 72158206}
   - component: {fileID: 72158205}
   m_Layer: 3
-  m_Name: box2 (13)
+  m_Name: box12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -400,9 +403,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 0
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &72158206
@@ -465,7 +469,7 @@ GameObject:
   - component: {fileID: 89565055}
   - component: {fileID: 89565054}
   m_Layer: 3
-  m_Name: box2 (12)
+  m_Name: box21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -483,9 +487,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 1
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &89565055
@@ -799,7 +804,7 @@ GameObject:
   - component: {fileID: 343750376}
   - component: {fileID: 343750377}
   m_Layer: 0
-  m_Name: box2 (19)
+  m_Name: box58
   m_TagString: Untagged
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1064,7 +1069,7 @@ GameObject:
   - component: {fileID: 439586748}
   - component: {fileID: 439586747}
   m_Layer: 3
-  m_Name: box 2 (16)
+  m_Name: box9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1082,9 +1087,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 1
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &439586748
@@ -1246,9 +1252,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 0
+  itemTypeId: 0
+  idSprite: 0
   status: Trash
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!1 &519420028
@@ -1347,7 +1354,7 @@ GameObject:
   - component: {fileID: 523829237}
   - component: {fileID: 523829236}
   m_Layer: 3
-  m_Name: box 2 (12)
+  m_Name: box27
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1365,9 +1372,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 0
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &523829237
@@ -1499,7 +1507,7 @@ GameObject:
   - component: {fileID: 559830969}
   - component: {fileID: 559830968}
   m_Layer: 3
-  m_Name: box2 (20)
+  m_Name: box15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1517,9 +1525,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 0
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &559830969
@@ -1582,7 +1591,7 @@ GameObject:
   - component: {fileID: 563187746}
   - component: {fileID: 563187745}
   m_Layer: 3
-  m_Name: box2 (6)
+  m_Name: box18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1600,9 +1609,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 1
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &563187746
@@ -2116,7 +2126,7 @@ GameObject:
   - component: {fileID: 716046676}
   - component: {fileID: 716046675}
   m_Layer: 3
-  m_Name: box2 (15)
+  m_Name: box22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2134,9 +2144,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 0
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &716046676
@@ -2199,7 +2210,7 @@ GameObject:
   - component: {fileID: 779331351}
   - component: {fileID: 779331350}
   m_Layer: 3
-  m_Name: box2 (11)
+  m_Name: box11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2217,9 +2228,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 1
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &779331351
@@ -2347,7 +2359,7 @@ GameObject:
   - component: {fileID: 815468494}
   - component: {fileID: 815468493}
   m_Layer: 3
-  m_Name: box2 (0)
+  m_Name: box0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2365,9 +2377,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 0
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &815468494
@@ -2512,7 +2525,7 @@ GameObject:
   - component: {fileID: 848816053}
   - component: {fileID: 848816052}
   m_Layer: 3
-  m_Name: box 2 (14)
+  m_Name: box8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2530,9 +2543,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 0
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &848816053
@@ -3036,7 +3050,7 @@ GameObject:
   - component: {fileID: 1100051309}
   - component: {fileID: 1100051308}
   m_Layer: 3
-  m_Name: box2 (3)
+  m_Name: box2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3054,9 +3068,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 0
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &1100051309
@@ -3285,7 +3300,7 @@ GameObject:
   - component: {fileID: 1134018850}
   - component: {fileID: 1134018849}
   m_Layer: 3
-  m_Name: box 2 (15)
+  m_Name: box20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3303,9 +3318,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 1
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &1134018850
@@ -3453,7 +3469,7 @@ GameObject:
   - component: {fileID: 1158372254}
   - component: {fileID: 1158372253}
   m_Layer: 3
-  m_Name: box2 (5)
+  m_Name: box4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3471,9 +3487,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 0
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &1158372254
@@ -3822,9 +3839,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 0
+  itemTypeId: 0
+  idSprite: 0
   status: Trash
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!1 &1271881548
@@ -3839,7 +3857,7 @@ GameObject:
   - component: {fileID: 1271881550}
   - component: {fileID: 1271881549}
   m_Layer: 3
-  m_Name: box2 (8)
+  m_Name: box19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3857,9 +3875,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 0
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &1271881550
@@ -4203,9 +4222,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 0
+  itemTypeId: 0
+  idSprite: 0
   status: Trash
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!1 &1360721276
@@ -4303,7 +4323,7 @@ GameObject:
   - component: {fileID: 1389505309}
   - component: {fileID: 1389505310}
   m_Layer: 0
-  m_Name: box2 (17)
+  m_Name: box56
   m_TagString: Untagged
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -4473,7 +4493,7 @@ GameObject:
   - component: {fileID: 1423805426}
   - component: {fileID: 1423805425}
   m_Layer: 3
-  m_Name: box2 (4)
+  m_Name: box3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4491,9 +4511,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 1
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &1423805426
@@ -4555,7 +4576,7 @@ GameObject:
   - component: {fileID: 1463118446}
   - component: {fileID: 1463118445}
   m_Layer: 3
-  m_Name: box2 (14)
+  m_Name: box13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4573,9 +4594,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 1
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &1463118446
@@ -4638,7 +4660,7 @@ GameObject:
   - component: {fileID: 1502474906}
   - component: {fileID: 1502474905}
   m_Layer: 3
-  m_Name: box 2 (13)
+  m_Name: box7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4656,9 +4678,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 1
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &1502474906
@@ -4754,7 +4777,7 @@ GameObject:
   - component: {fileID: 1555706011}
   - component: {fileID: 1555706010}
   m_Layer: 3
-  m_Name: box2 (1)
+  m_Name: box1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4772,9 +4795,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 1
-  idItem: 0
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &1555706011
@@ -5201,7 +5225,7 @@ GameObject:
   - component: {fileID: 1644705574}
   - component: {fileID: 1644705575}
   m_Layer: 0
-  m_Name: box 2 (10)
+  m_Name: box55
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5265,7 +5289,7 @@ GameObject:
   - component: {fileID: 1645738441}
   - component: {fileID: 1645738440}
   m_Layer: 3
-  m_Name: box2 (21)
+  m_Name: box16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5283,9 +5307,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 1
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &1645738441
@@ -5546,7 +5571,7 @@ GameObject:
   - component: {fileID: 1834204406}
   - component: {fileID: 1834204405}
   m_Layer: 3
-  m_Name: box2 (22)
+  m_Name: box23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5564,9 +5589,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 1
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &1834204406
@@ -5628,7 +5654,7 @@ GameObject:
   - component: {fileID: 1839153621}
   - component: {fileID: 1839153622}
   m_Layer: 0
-  m_Name: box2 (18)
+  m_Name: box57
   m_TagString: Untagged
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -5847,7 +5873,7 @@ GameObject:
   - component: {fileID: 2020079244}
   - component: {fileID: 2020079243}
   m_Layer: 3
-  m_Name: box2 (9)
+  m_Name: box6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5865,9 +5891,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 1
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &2020079244
@@ -6438,7 +6465,7 @@ GameObject:
   - component: {fileID: 2133440935}
   - component: {fileID: 2133440934}
   m_Layer: 3
-  m_Name: box2 (16)
+  m_Name: box14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6456,9 +6483,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb340e14887f484f80077c017688713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idBox: 0
-  idItem: 1
+  itemTypeId: 0
+  idSprite: 0
   status: Ready
+  boxType: 
   manager: {fileID: 1393301080}
   selected: 0
 --- !u!60 &2133440935

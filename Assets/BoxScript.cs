@@ -10,6 +10,7 @@ public class BoxScript : MonoBehaviour
     public int idSprite;
     public string status;
 
+    public string boxType;
     public BoxManager manager;
 
     public bool selected;
