@@ -9,4 +9,6 @@ public class Item : ScriptableObject
     public Sprite sprite;
     public int idItemType;
 
+    public string type;
+
 }

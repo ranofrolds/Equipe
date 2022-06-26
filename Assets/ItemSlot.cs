@@ -14,6 +14,8 @@ public class ItemSlot : ScriptableObject
 
     public bool filled;
 
+    public string type;
+
 
 
 }

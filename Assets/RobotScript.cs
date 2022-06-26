@@ -6,7 +6,10 @@ public class RobotScript : MonoBehaviour
 {
     int idRobot;
 
-    public List<ItemSlot> robotParts = new List<ItemSlot>();
+    public bool armsSeparated;
+    public bool legsSeparated;
+
+    public List<ItemSlot> slots = new List<ItemSlot>();
 
     public int score;
     public int maxScore;
@@ -84,13 +87,13 @@ public class RobotScript : MonoBehaviour
 
 
         //para cada slot de item
-        for(int i = 0; i < robotParts.Count; i++)
+        for(int i = 0; i < slots.Count; i++)
         {
-            if(robotParts[i].currentItem == null) robotParts[i].currentItem = nothing;
-            bool rightItem = robotParts[i].idRequestedItemType == robotParts[i].currentItem.idItemType;
+            if(slots[i].currentItem == null) slots[i].currentItem = nothing;
+            bool rightItem = slots[i].idRequestedItemType == slots[i].currentItem.idItemType;
 
             //se estiver preenchido e certo, adicionar ponto
-            if(robotParts[i].filled && rightItem) score += 10;
+            if(slots[i].filled && rightItem) score += 10;
         }
 
             waveScript.maxScore += maxScore;
@@ -111,31 +114,34 @@ public class RobotScript : MonoBehaviour
     public bool insertPart(Item insertedPart){
 
         bool anySlotFilled = false;
+        
+        
         //para cada slot de item
-        for(int i = 0; i < robotParts.Count; i++)
+        for(int i = 0; i < slots.Count; i++)
         {
-            
-            //colocar no primeiro disponivel
-            if(robotParts[i].filled == false && anySlotFilled == false)
+
+            //está prenchido?
+
+            //se não...
+            if(!slots[i].filled)
             {
+               
+                //...é a parte certa q o player está tentando colocar?
 
-
-
-                //registrar que preencheu ja algum
-                anySlotFilled = true;
-
-                //registrar no slot que ele foi preenchido
-                robotParts[i].filled = true;
-
-                //colocar o item atual no slot
-                robotParts[i].currentItem = insertedPart;
-
-                holes[i].sprite = insertedPart.sprite;
-                holes[i].color = Color.white;
+                //se sim, colocar parte
+                if(insertedPart.type == slots[i].type)
+                {
+                    slots[i].currentItem = insertedPart;
+                    slots[i].filled = true;
+                }
 
             }
-            
+
         }
+           
+            
+            
+        
 
         if(anySlotFilled == true)
         {

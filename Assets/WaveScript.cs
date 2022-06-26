@@ -38,7 +38,7 @@ public class WaveScript : MonoBehaviour
         done.Add(0);
         generateWaveBox();
         GameObject currentRobot = Instantiate(robot);
-        generateRobot(currentRobot.GetComponent<RobotScript>());
+        //generateRobot(currentRobot.GetComponent<RobotScript>());
         robots.Enqueue(currentRobot);
         robotManager.robots.Add(currentRobot.GetComponent<RobotScript>());
         
@@ -51,7 +51,7 @@ public class WaveScript : MonoBehaviour
         done.Add(0);        
         generateWaveBox();
         GameObject currentRobot = Instantiate(robot);
-        generateRobot(currentRobot.GetComponent<RobotScript>());
+        //generateRobot(currentRobot.GetComponent<RobotScript>());
         robots.Enqueue(currentRobot);
         robotManager.robots.Add(currentRobot.GetComponent<RobotScript>());
         StartCoroutine(delay(delayBetweenRobots));
@@ -79,7 +79,7 @@ public class WaveScript : MonoBehaviour
             yield return new WaitForSeconds(delay);
             
             GameObject currentRobot = Instantiate(robot);
-            generateRobot(currentRobot.GetComponent<RobotScript>());
+            //generateRobot(currentRobot.GetComponent<RobotScript>());
             robots.Enqueue(currentRobot);
             robotManager.robots.Add(currentRobot.GetComponent<RobotScript>());
         }
@@ -178,86 +178,86 @@ public class WaveScript : MonoBehaviour
 
     }
 
-    void generateRobot(RobotScript robotScript)
-    {
-        //pegar lista de buracos
-        for(int i = 0; i < robotScript.transform.childCount; i++)
-        {
-            robotScript.holes.Add(robotScript.transform.GetChild(i).GetComponent<SpriteRenderer>());
-            robotScript.holes[i].enabled = false;
-        }
-
-
-        int wave= idWave;
-        int min=0, max=0;
-        /*
-        wave 1 - 2 -> 2 peças
-        wave 3 - 5 ->2 - 3 peças
-        wave  6- 8 -> 2- 4 
-        wave 8 - 12 -> 3 - 5
-        wave 12+ -> 5
-        */
-
-        if(wave>0){
-            if(wave <= 2){
-                min=1;
-                max=2;
-            }
-            else if(wave <=5){
-                min=2;
-                max=3;
-            }
-            else if(wave <=8){
-                min=2;
-                max=4;
-            }
-            else if(wave <=12){
-                min=3;
-                max=5;
-            }
-            else{
-                min=5;
-                max=5;
-            }
-        }
-
-        
-        if(min !=0 && max!=0 )
-        {
-            int quantidadeItens = Random.Range(min, max+1);
-
-            for(int i = 0; i < quantidadeItens; i++)
-            {
-
-                //Criar novo slot de item
-                ItemSlot newSlot = (ItemSlot)ScriptableObject.CreateInstance("ItemSlot");
-
-                //gerar random o tipo de item que vai ser
-                newSlot.idRequestedItemType = Random.Range(0, robotManager.maxItemTypeId + 1);
-                //definir que o slot não foi preenchido
-                newSlot.filled = false;
-
-                //btaço
-                if(newSlot.idRequestedItemType == 0) newSlot.icon = armIcon;
-                //bola
-                else if(newSlot.idRequestedItemType == 1) newSlot.icon = ballIcon;
-
-                //adicionar slot a lista de slots
-                robotScript.robotParts.Add(newSlot);
-
-                //Aumentar o score máximo
-                robotScript.maxScore += 10;
-            }
-            
-        }
-        
-        //habilitar numero certo de buracos
-        for(int i = 0; i < robotScript.robotParts.Count; i++)
-        {
-            robotScript.holes[i].enabled = true;
-            robotScript.holes[i].sprite = robotScript.robotParts[i].icon;
-        }
-
-    }
+    ///void generateRobot(RobotScript robotScript)
+    ///{
+    ///    //pegar lista de buracos
+    ///    for(int i = 0; i < robotScript.transform.childCount; i++)
+    ///    {
+    ///        robotScript.holes.Add(robotScript.transform.GetChild(i).GetComponent<SpriteRenderer>());
+    ///        robotScript.holes[i].enabled = false;
+    ///    }
+///
+///
+    ///    int wave= idWave;
+    ///    int min=0, max=0;
+    ///    /*
+    ///    wave 1 - 2 -> 2 peças
+    ///    wave 3 - 5 ->2 - 3 peças
+    ///    wave  6- 8 -> 2- 4 
+    ///    wave 8 - 12 -> 3 - 5
+    ///    wave 12+ -> 5
+    ///    */
+///
+    ///    if(wave>0){
+    ///        if(wave <= 2){
+    ///            min=1;
+    ///            max=2;
+    ///        }
+    ///        else if(wave <=5){
+    ///            min=2;
+    ///            max=3;
+    ///        }
+    ///        else if(wave <=8){
+    ///            min=2;
+    ///            max=4;
+    ///        }
+    ///        else if(wave <=12){
+    ///            min=3;
+    ///            max=5;
+    ///        }
+    ///        else{
+    ///            min=5;
+    ///            max=5;
+    ///        }
+    ///    }
+///
+    ///    
+    ///    if(min !=0 && max!=0 )
+    ///    {
+    ///        int quantidadeItens = Random.Range(min, max+1);
+///
+    ///        for(int i = 0; i < quantidadeItens; i++)
+    ///        {
+///
+    ///            //Criar novo slot de item
+    ///            ItemSlot newSlot = (ItemSlot)ScriptableObject.CreateInstance("ItemSlot");
+///
+    ///            //gerar random o tipo de item que vai ser
+    ///            newSlot.idRequestedItemType = Random.Range(0, robotManager.maxItemTypeId + 1);
+    ///            //definir que o slot não foi preenchido
+    ///            newSlot.filled = false;
+///
+    ///            //btaço
+    ///            if(newSlot.idRequestedItemType == 0) newSlot.icon = armIcon;
+    ///            //bola
+    ///            else if(newSlot.idRequestedItemType == 1) newSlot.icon = ballIcon;
+///
+    ///            //adicionar slot a lista de slots
+    ///            robotScript.robotParts.Add(newSlot);
+///
+    ///            //Aumentar o score máximo
+    ///            robotScript.maxScore += 10;
+    ///        }
+    ///        
+    ///    }
+    ///    
+    ///    //habilitar numero certo de buracos
+    ///    for(int i = 0; i < robotScript.robotParts.Count; i++)
+    ///    {
+    ///        robotScript.holes[i].enabled = true;
+    ///        robotScript.holes[i].sprite = robotScript.robotParts[i].icon;
+    ///    }
+///
+    ///}
     
 }
