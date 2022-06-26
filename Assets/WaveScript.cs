@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaveScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+   
     public GameObject robot;
     public int idWave;
     public Queue<GameObject> robots=new Queue<GameObject>();
@@ -19,25 +19,32 @@ public class WaveScript : MonoBehaviour
     public float delayBetweenWaves = 5;
 
 
+    public RobotManager robotManager;
+
 
     void Start()
     {
         restarted=false;
         idWave=1;
         done.Add(0);
-        robots.Enqueue(Instantiate(robot));
+
+        GameObject currentRobot = Instantiate(robot);
+        robots.Enqueue(currentRobot);
+        robotManager.robots.Add(currentRobot.GetComponent<RobotScript>());
         StartCoroutine(delay(delayBetweenRobots));
         
     }
 
     void Restart(){
         idWave++;
-        done.Add(0);
-        robots.Enqueue(Instantiate(robot));
+        done.Add(0);        
+        GameObject currentRobot = Instantiate(robot);
+        robots.Enqueue(currentRobot);
+        robotManager.robots.Add(currentRobot.GetComponent<RobotScript>());
         StartCoroutine(delay(delayBetweenRobots));
     }
 
-    // Update is called once per frame
+
     void Update()
     {
 
@@ -53,7 +60,9 @@ public class WaveScript : MonoBehaviour
         for(int i=1; i<(idWave*2)+1; i++){
             yield return new WaitForSeconds(delay);
             
-            robots.Enqueue(Instantiate(robot));
+            GameObject currentRobot = Instantiate(robot);
+            robots.Enqueue(currentRobot);
+            robotManager.robots.Add(currentRobot.GetComponent<RobotScript>());
         }
     }
 

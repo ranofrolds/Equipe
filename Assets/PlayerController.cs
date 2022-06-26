@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public int heldItemId = -1;
 
     public BoxManager boxManager;
-
+    public RobotManager robotManager;
 
     Transform teleport1, teleport2;
 
@@ -19,13 +19,14 @@ public class PlayerController : MonoBehaviour
     
     float h, v;
 
-    LayerMask boxLayer;
+    LayerMask boxLayer, robotLayer;
 
 
     void Start()
     {
         heldSprite = transform.Find("HeldSprite").GetComponent<SpriteRenderer>();
         boxLayer = LayerMask.GetMask("Box");
+        robotLayer = LayerMask.GetMask("Robot");
         r = GetComponent<Rigidbody2D>();
         teleport1 = GameObject.Find("teleport1").transform;
         teleport2 = GameObject.Find("teleport2").transform;
@@ -41,6 +42,8 @@ public class PlayerController : MonoBehaviour
         doTeleport();
 
         boxDetect();
+
+        robotDetect();
        
         if(heldItemId == -1) heldSprite.sprite = null;
         else heldSprite.sprite = boxManager.sprites[heldItemId];
@@ -58,13 +61,67 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    void robotDetect()
+    {
+
+        //Detectar se está próximo de um robô
+        Collider2D robotCol = null;
+        Collider2D[] nearRobots;
+        float radius = .7f;
+        nearRobots = Physics2D.OverlapCircleAll(transform.position, radius, robotLayer);
+
+
+        if(nearRobots.Length >= 1)
+        {
+            robotCol = nearRobots[0];
+            for(int i = 1; i < nearRobots.Length; i++)
+            {
+                float currentDistance = Vector2.Distance(transform.position, robotCol.bounds.center);
+                float myDistance = Vector2.Distance(transform.position, nearRobots[i].bounds.center);
+
+                if (myDistance < currentDistance) robotCol = nearRobots[i];
+
+            }
+        }
+
+        RobotScript robotScript = robotCol?.gameObject.GetComponent<RobotScript>();
+
+        for(int i = 0; i < robotManager.robots.Count; i++)
+        {
+                
+                robotManager.robots[i].selected = false;
+              
+        }
+
+        if(robotScript != null) 
+        {
+            
+            
+
+            robotScript.selected = true;
+
+            if (Input.GetButtonDown("Pegar") && heldItemId != -1)
+            {
+
+                //se a parte foi inserida com sucesso
+                if (robotScript.insertPart(heldItemId))
+                {
+                    //tirar item da mão
+                    heldItemId = -1;
+                }
+                
+            }
+
+
+        }
+
+    }
     void boxDetect()
     {
         //Detectar se está próximo de uma caixa
         Collider2D boxCol = null;
         Collider2D[] nearBoxes;
         nearBoxes = Physics2D.OverlapCircleAll(transform.position, .5f, boxLayer);
-        Debug.DrawLine(transform.position, transform.position + (Vector3.right * 0.5f));
 
 
         if(nearBoxes.Length >= 1)
@@ -101,7 +158,7 @@ public class PlayerController : MonoBehaviour
                 if(picked != -2)
                 {
                     heldItemId = picked;
-                }       
+                }
             }
             else if (Input.GetButtonDown("Pegar") && boxScript.status == "Trash")
             {

@@ -5,15 +5,18 @@ using UnityEngine;
 public class RobotScript : MonoBehaviour
 {
     int idRobot;
-    bool[] robotParts;
+    public bool[] robotParts;
     bool done;
+
 
 
     List<Transform> points = new List<Transform>();
 
+    public List<SpriteRenderer> holes = new List<SpriteRenderer>();
+
     
     public float speed;
-
+    public bool selected;
     int currentPoint = 0;
 
     
@@ -25,6 +28,15 @@ public class RobotScript : MonoBehaviour
     {
 
         speed= GameObject.Find("Wave").GetComponent<WaveScript>().speed;
+
+
+        //pegar lista de buracos
+        for(int i = 0; i < transform.childCount; i++)
+        {
+            holes.Add(transform.GetChild(i).GetComponent<SpriteRenderer>());
+            holes[i].enabled = false;
+        }
+
 
         //pegar lista de pontos
         points = GameObject.Find("Checkpoints").GetComponent<CheckpointList>().points;
@@ -68,10 +80,15 @@ public class RobotScript : MonoBehaviour
         }
 
         if(min !=0 && max!=0 ){
-            int n= Random.Range(min-1, max);
+            int n= Random.Range(min, max+1);
             robotParts = new bool[n];
         }
         
+        //habilitar numero certo de buracos
+        for(int i = 0; i < robotParts.Length; i++)
+        {
+            holes[i].enabled = true;
+        }
 
 
     }
@@ -94,9 +111,7 @@ public class RobotScript : MonoBehaviour
 
         if(currentPoint==11){
             if(robots!=null){
-                if(robots.Count==1){
-                    GameObject.Find("Wave").GetComponent<WaveScript>().restarted=false;
-                }
+
                 robots.Dequeue();
             }
             Destroy(gameObject);
@@ -108,13 +123,24 @@ public class RobotScript : MonoBehaviour
 
     }
 
-    void insertPart(int idPart){
+    public bool insertPart(int idPart){
         if(robotParts[idPart]==false){
+
+            BoxManager boxManager = GameObject.Find("BoxManager").GetComponent<BoxManager>();
+
             robotParts[idPart]=true;
+            holes[idPart].color = Color.white;
+            holes[idPart].sprite = boxManager.sprites[idPart];
+            
+            return true;
+
+
+
             //insere
         }
         else{
             print("Ja foi inserido");
+            return false;
             //nao insere
         }
 
